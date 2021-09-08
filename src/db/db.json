@@ -1,0 +1,229 @@
+{
+  "blog_single": [
+    {
+      "title": "li",
+      "description": "sssss",
+      "content": "vvvvvv![img-upload](http://res.cloudinary.com/hcmusvnu/image/upload/v1629446289/cloudinary//blog/linux.png)",
+      "author": 15,
+      "image": 3,
+      "type": [],
+      "id": 1
+    }
+  ],
+  "blog_add": [],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Giới thiệu hệ điều hành linux",
+      "author": {
+        "id": 15,
+        "name": "admin",
+        "image": "avocado.jpg"
+      },
+      "description": "Các bạn đã nghe nói đến laravel hay magento vốn là những framework vô cùng nỗi tiếng của php",
+      "image": {
+        "id": 1,
+        "name": "image_default.png"
+      },
+      "content": "## **Hệ điều hành Linux là gì?**\n\n![img-upload](http://res.cloudinary.com/hcmusvnu/image/upload/v1629446289/cloudinary//blog/linux.png)\n\n  Sự độc bá của Windows và Mac OS không ngăn cản được những hệ điều hành phát triển. Hệ điều hành mã nguồn mở như Linux vẫn phát triển mạnh mẽ. Ngoài những chức năng thường, Linux còn sở hữu nhiều ưu điểm vượt trội khác. Chẳng hạn như:\n\n*   Không tốn nhiều chi phí mua bản quyền\n*   Tính bảo mật tương đối cao\n*   Tính linh hoạt\n*   Có thể hoạt động tốt trên các máy tính cấu hình yếu",
+      "types": [
+        {
+          "id": 2,
+          "name": "Back End"
+        },
+        {
+          "id": 3,
+          "name": "Front End"
+        },
+        {
+          "id": 9,
+          "name": "PHP"
+        }
+      ],
+      "publish_date": "2021-08-21T05:49:15.000+00:00"
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "name": "Server"
+    },
+    {
+      "id": 2,
+      "name": "Back End"
+    },
+    {
+      "id": 3,
+      "name": "Front End"
+    },
+    {
+      "id": 4,
+      "name": "Computing"
+    },
+    {
+      "id": 5,
+      "name": "Math"
+    },
+    {
+      "id": 6,
+      "name": "AI"
+    }
+  ],
+  "toplike": [
+    {
+      "id": 1,
+      "title": "Giới thiệu tổng quan về php",
+      "description": "PHP là một ngôn ngữ lập trình server-side, hôm nay mình sẽ giới thiệu về PHP",
+      "image": {
+        "id": 1,
+        "name": "image_default.png"
+      },
+      "publish_date": "2021-08-21T05:49:15.000+00:00",
+      "statView": 0,
+      "statLove": 0,
+      "author": {
+        "id": 15,
+        "name": "admin"
+      },
+      "types": [
+        {
+          "id": 2,
+          "name": "Back End"
+        },
+        {
+          "id": 3,
+          "name": "Front End"
+        },
+        {
+          "id": 9,
+          "name": "PHP"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Framework của php",
+      "description": "Các bạn đã nghe nói đến laravel hay magento vốn là những framework vô cùng nỗi tiếng của php",
+      "image": {
+        "id": 1,
+        "name": "image_default.png"
+      },
+      "publish_date": "2021-08-21T05:49:15.000+00:00",
+      "statView": 0,
+      "statLove": 0,
+      "author": {
+        "id": 15,
+        "name": "admin"
+      },
+      "types": [
+        {
+          "id": 2,
+          "name": "Back End"
+        },
+        {
+          "id": 3,
+          "name": "Front End"
+        },
+        {
+          "id": 9,
+          "name": "PHP"
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "id": 1,
+      "name": "image_default.png"
+    },
+    {
+      "id": 2,
+      "name": "spring_boot.png"
+    },
+    {
+      "id": 3,
+      "name": "linux.png"
+    },
+    {
+      "id": 4,
+      "name": "PHP_laravel.png"
+    }
+  ],
+  "trending": [
+    {
+      "id": 1,
+      "title": "Giới thiệu tổng quan về php",
+      "image": {
+        "id": 1,
+        "name": "image_default.png"
+      },
+      "publish_date": "2021-08-21T05:49:15.000+00:00",
+      "statView": 0,
+      "statLove": 0,
+      "author": {
+        "id": 15,
+        "name": "admin"
+      },
+      "types": [
+        {
+          "id": 2,
+          "name": "Back End"
+        },
+        {
+          "id": 3,
+          "name": "Front End"
+        },
+        {
+          "id": 9,
+          "name": "PHP"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Lập Trình UNIX",
+      "image": {
+        "id": 1,
+        "name": "image_default.png"
+      },
+      "publish_date": "2021-08-21T05:49:15.000+00:00",
+      "statView": 0,
+      "statLove": 0,
+      "author": {
+        "id": 15,
+        "name": "admin"
+      },
+      "types": [
+        {
+          "id": 2,
+          "name": "Server"
+        },
+        {
+          "id": 3,
+          "name": "Linux"
+        },
+        {
+          "id": 9,
+          "name": "Code"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "isSocialLogin": 0,
+      "email": "123@gmail.com",
+      "password": "$2a$10$Z3tO9o5eHBgjpTdTZCPaGeRsZ9ujjriEN85vQFzRfnW0.HWsKUz6i",
+      "fullName": "aaaa",
+      "phone": "0987654321",
+      "brief": "tôi yêu thích Spring boot, PHP và web development",
+      "image": "avocado.jpg",
+      "id": 1
+    },
+    {
+      "email": "admin@123.com",
+      "password": "$2a$10$E0Xene6XlKQGJpsVKB4myOeVllJC451WGHGB6hjRATV2ZaqmomKJa",
+      "id": 2
+    }
+  ]
+}
