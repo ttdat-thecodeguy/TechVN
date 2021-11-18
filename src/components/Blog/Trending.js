@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import ContentLoader from "react-content-loader";
 import { formatPublishDate } from '../../utils/datetimejs'
 import {Link} from 'react-router-dom'
 export const Trending = (props) => {
   const { rank, post } = props;
+
+  let [isLoved, setIsLoved] = useState(false)
+
+  const handleLover = e => {
+    setIsLoved(!isLoved)
+  }
+
   return (
     <div class="trend-entry d-flex">
       <div class="number align-self-start">{rank}</div>
@@ -16,10 +23,9 @@ export const Trending = (props) => {
             <a href="#">{post.account.username}</a> in <a href="#">{post.types[0].name}</a>
           </span>
           <span class="date-read">
-            {formatPublishDate(post.publish_date)}
+            {formatPublishDate(post.publishDate)}
             <span class="mx-1">&bull;</span>
-            3 min read 
-            <span class="icon-star2"></span>
+            <span><i class="fa fa-heart" style={{ color: `${!isLoved ? 'gray' : 'red'}` }} onClick={ e => handleLover(e)} aria-hidden="true"></i></span>
           </span>
         </div>
       </div>

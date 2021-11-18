@@ -27,10 +27,10 @@ const Header = props => {
                                     </div>
                                     <form action="#" class="search-form d-inline-block">
 
-                                    <div class="d-flex">
-                                        <input type="email" class="form-control-app" placeholder="Search..." />
-                                        <button type="submit" class="btn btn-secondary" ><span class="icon-search"></span></button>
-                                    </div>
+                                        <div class="d-flex">
+                                            <input type="email" class="form-control-app" placeholder="Search..." />
+                                            <button type="submit" class="btn btn-secondary" ><span class="icon-search"></span></button>
+                                        </div>
                                     </form>
 
                                     

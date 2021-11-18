@@ -22,6 +22,9 @@ export const InterceptorError = (store, history) => {
         if(error.response.status === 403){
             history.push('/403')
         }
+        if(error.response.status === 500){
+            history.push('/500')
+        }
     })
 }
 

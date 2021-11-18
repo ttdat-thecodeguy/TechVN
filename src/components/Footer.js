@@ -3,11 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <>
-                
-
-
-                    
-                    <div class="footer">
+                    <div class="footer" style={{ borderTop:"1px solid #D0D0D0", backgroundColor: "#Fff" }}>
                         <div class="container">
                             <div class="row">
                             <div class="col-12">

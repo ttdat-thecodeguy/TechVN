@@ -6,13 +6,12 @@ import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom'
 
 const TrendingList = props => {
-
   const dispatch = useDispatch();
   const [posts] = useSelector((state) => [state.blogReducers.trend]);
+  
   useEffect(() => {
     dispatch(getTrendingRequest());
   }, [dispatch]);
-
   return (
     <>
       <div class="section-title">

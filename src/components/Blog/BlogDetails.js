@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // action
@@ -10,6 +10,10 @@ import { formatPublishDate } from "../../utils/datetimejs";
 
 import ReactMarkdown from "react-markdown";
 
+////sockjs, stomp
+import SockJS from "sockjs-client";
+import Stomp from "stompjs";
+
 const BlogDetails = (props) => {
   const dispatch = useDispatch();
   let { name } = useParams();
@@ -20,10 +24,25 @@ const BlogDetails = (props) => {
       props.history.push("/404");
     dispatch({
       type: Types.LOADING_TOGGLE,
-      payload: true,
+      payload: true
     });
     dispatch(getBlogByNameRequest(parseInt(l_name[0]), props.history));
   }, [dispatch, name, props.history]);
+
+  ////
+  // const handleNhanXet = (e) => {
+  //   e.preventDefault();
+  //   var sock = new SockJS("https://techblog-vn.herokuapp.com/gs-guide-websocket");
+  //   let stompClient = Stomp.over(sock);
+  //   stompClient.connect({}, function (frame) {
+  //     console.log("Connected: ");
+  //     stompClient.subscribe("/topic/greetings", (messeage) => {
+  //       console.log("hello");
+  //       console.log("hello" + messeage);
+  //     });
+  //     setStompClient(stompClient);
+  //   });
+  // };
 
   //useSelector
   const [blog] = useSelector((state) => [state.blogReducers.blogs]);
@@ -49,13 +68,12 @@ const BlogDetails = (props) => {
             </div>
             <div class="vcard">
               <span class="d-block">
-                <a href="#">{blog.account.name}</a> Trong
-                <a href="#">{blog.types[0].name}</a>
+                <a href="#">{blog.account.name}</a> Trong <a href="#">{blog.types[0].name}</a>
               </span>
               <span class="date-read">
-                {formatPublishDate(blog.publish_date)}
+                {formatPublishDate(blog.publishDate)}
                 <span class="mx-1">&bull;</span> 3 Phút Đọc
-                <span class="icon-star2"></span>
+                <span class="icon-star2 icon-statView"></span>
               </span>
             </div>
           </div>
@@ -102,24 +120,26 @@ const BlogDetails = (props) => {
                   <img src="images/person_1.jpg" alt="Image placeholder" />
                 </div>
 
-              <form>
+                <form>
+                  <div class="comment-body">
+                    <div class="form-group">
+                      <label for="message">Message</label>
+                      <textarea
+                        name=""
+                        id="message"
+                        cols="30"
+                        rows="5"
+                        class="form-control"
+                      ></textarea>
+                    </div>
 
-                <div class="comment-body">
-                  <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea
-                      name=""
-                      id="message"
-                      cols="30"
-                      rows="5"
-                      class="form-control"
-                    ></textarea>
+                    <button
+                      class="btn btn-primary"
+                      name="btnNhanXet"
+                      value="Nhận Xét"
+                    >Bình luận</button>
                   </div>
-
-                  <input class="btn btn-primary" name="btn" value="Nhận Xét" />
-
-                </div>
-              </form>
+                </form>
               </li>
             </ul>
           </div>

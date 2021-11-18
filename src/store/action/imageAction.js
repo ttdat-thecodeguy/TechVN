@@ -1,6 +1,5 @@
 import * as Types from '../../constraints/ActionTypes'
-import { getImage } from '../../service/imageService'
-
+import { getImage, uploadImage } from '../../service/imageService'
 
 
 
@@ -14,5 +13,14 @@ export const getImageRequest = () => {
         }).catch((err) => {
             console.log(err)
         });
+    }
+}
+
+
+export const uploadImageRequest = (data) => {
+    return dispatch => {
+        uploadImage(data).then(res => {
+            
+        })
     }
 }

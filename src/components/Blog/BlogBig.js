@@ -13,8 +13,10 @@ export const BlogBig = props => {
                             <h2><Link to={'/blog/' + post.link}>{post.title}</Link></h2>
                             <p>{props.post.description}</p>
                             <div class="post-meta">
-                            <span class="d-block"><a href="#">{post.account.name}</a> Trong <a href="#">{post.types[0].name}</a></span>
-                                <span class="date-read">{formatPublishDate(post.publish_date)}<span class="mx-1">&bull;</span> 3 min read <span class="icon-star2"></span></span>
+                            <span class="d-block" >
+                                <a href="#">{post.account.name}</a> Trong <a href="#">{post.types[0].name}</a></span>
+                                <span class="date-read">{formatPublishDate(post.publishDate)}<span class="mx-1">&bull;</span></span>
+                                <span class="icon-star2 "></span>
                             </div>
         </div>
     );

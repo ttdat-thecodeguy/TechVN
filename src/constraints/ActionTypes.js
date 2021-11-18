@@ -13,19 +13,32 @@ export const LOADING_TOGGLE = "loading toggle"
 export const GET_USER_DETAILS = "get user details"
 
 ////
-
+export const GET_CATE_BLOG = "get cate blog"
 export const GET_BLOG = "get blog"
 export const GET_BY_ID_BLOG = "get by id blog"
+export const GET_BLOG_BY_SEARCH_NAME = "get blog by search name"
+
+//// crud
+
 export const ADD_BLOG = "add blog"
 export const UPDATE_BLOG = "update blog"
 export const DELETE_BLOG = "delete blog"
+
+//// Home
+
 export const GET_TRENDING_BLOG = "trending blog"
 export const GET_TOP_LOVE = "get top love "
 export const GET_RECOMMEND = "get recommend"
 
 
+///loved
+export const GET_BLOGS_LOVED = "get blog loved"
+
 /// GET IMAGE
 export const GET_IMAGE = "get image"
+export const UPLOAD_IMAGE = "upload image"
+
 
 /// GET TYPE
 export const GET_TYPE = "get type"
+export const GET_TYPE_BY_LEVEL = "get type by level"

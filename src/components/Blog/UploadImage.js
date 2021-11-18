@@ -4,6 +4,7 @@ import * as Config from "../../constraints/Config";
 import { useSelector, useDispatch } from "react-redux";
 import { isEmpty } from "lodash";
 import { getImageTestingRequest } from "../../store/action/imageAction";
+var FormData = require("form-data");
 
 Modal.setAppElement("#root");
 
@@ -18,6 +19,7 @@ const customStylesModal = {
     textAlign: "center",
   },
 };
+
 
 const UploadImage = (props) => {
   // const listImage = [
@@ -79,6 +81,16 @@ const UploadImage = (props) => {
     setImgStyle([...imgStyle]);
   };
 
+  const handleUpload = e => {
+    e.preventDefault()
+
+    // var sendData = new FormData();
+    // Array.from(images).forEach((file) => sendData.append("images", file));
+    var sendData = new FormData();
+    Array.from(e.target.files).forEach((file) => sendData.append("files", file));
+    
+  }
+
   useEffect(() => {
     setError("");
     if (props.listImage.length !== 0) {
@@ -124,7 +136,10 @@ const UploadImage = (props) => {
 
       <div className="mt-5">
         {error !== "" && <p class="error-title">{error}</p>}
-        <button class="mr-2 btn btn-primary">Upload ảnh</button>
+        <label for="file-upload" class="m-auto btn btn-primary">
+              Upload File
+        </label>
+        <input id="file-upload" type="file" onInput={e => handleUpload(e)} multiple/>
         <button class="btn btn-success" onClick={() => handleAddImage()}>
           Thêm ảnh
         </button>

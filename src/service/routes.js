@@ -5,6 +5,7 @@ import Blog from "../container/Blog";
 import UserDetails from "../container/User/UserDetails";
 import UserBlog from "../container/User/UserBlog";
 import BlogEdit from "../container/Blog/BlogEdit";
+import CateBlog from "../container/Cate";
 
 import Error from "../container/Error";
 import * as ErrorTypes from "../constraints/ErrorType"
@@ -24,6 +25,16 @@ const routes = [
     path: "/register",
     exact: false,
     main: () => <Register />,
+  },
+  {
+    path: "/danh-sach-blog",
+    exact: false,
+    main: () => <CateBlog />
+  },
+  {
+    path: "/danh-muc/:id/:name",
+    exact: false,
+    main: () => <CateBlog />
   },
   {
     path: "/blog/:name",

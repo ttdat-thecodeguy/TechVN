@@ -15,6 +15,7 @@ const Error = props => {
 				<a href="#"><i class="fa fa-pinterest"></i></a>
 				<a href="#"><i class="fa fa-google-plus"></i></a>
 			</div>
+
 		</div>
 	</div>
     );
