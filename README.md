@@ -1,11 +1,5 @@
 # Getting Started with Create React App
 
-# today
-
-1. load type
-2. add blog edit
-3. load blog to page single
-4. triển khai catching error tự động
-
-
 # tomorrow
+api
+1. thiết kế lại cái api yêu thích - thêm loại init extends simple (only id)
