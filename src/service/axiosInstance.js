@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '../store'
 import { isAuth } from '../store/selector/authSelector'
 const axiosInstance = axios.create({
-    baseURL: `https://techblog-vn.herokuapp.com`
+    baseURL: `https://techblog-vn.herokuapp.com/`
 })
 
 axiosInstance.interceptors.request.use(config => {

@@ -12,7 +12,7 @@ const CateBlog = (props) => {
 
   //// init state
 
-  let { id } = useParams();
+  let { id, searchName } = useParams();
   let [page, setPage] = useState(0);
   const [types, setTypes] = useSelector((state) => [state.typeReducers]);
   const [cate] = useSelector((state) => [state.blogReducers.cate]);
@@ -30,6 +30,18 @@ const CateBlog = (props) => {
 
 
   useEffect(() => {
+
+    // if(searchName !== null){
+    //   setSearchContent(searchName)
+    //   setIsSearch(true)
+    // }
+    
+    if(searchName !== null && searchName !== undefined){
+          setSearchContent(searchName)
+          setIsSearch(true)
+    }
+
+
     if (id !== null && id !== undefined) {
       if(isSearch === true){
         dispatch(getBlogBySearchNameRequest(page, 8, isDateAscSort, isTitleAscSort, id, searchContent))

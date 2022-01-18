@@ -75,6 +75,7 @@ export const getBlogBySearchNameRequest = (start, size, isAscDate, isAscTitle, c
             })
             dispatch(loadAction(false));
         }).catch(err => {
+            console.log(err)
             dispatch(loadAction(false));
         })
     }

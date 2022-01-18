@@ -12,24 +12,44 @@ export const Trending = (props) => {
   }
 
   return (
+    // <div class="trend-entry d-flex">
+    //   <div class="number align-self-start">{rank}</div>
+    //   <div class="trend-contents">
+    //     <h2>
+    //       <Link to ={'/blog/' + post.link}>{post.title}</Link>
+    //     </h2>
+    //     <div class="post-meta">
+    //       <span class="d-block">
+    //         <a href="#">{post.account.username}</a> in <a href="#">{post.types[0].name}</a>
+    //       </span>
+    //       <span class="date-read">
+    //         {formatPublishDate(post.publishDate)}
+    //         <span class="mx-1">&bull;</span>
+    //         <span><i class="fa fa-heart" style={{ color: `${!isLoved ? 'gray' : 'red'}` }} onClick={ e => handleLover(e)} aria-hidden="true"></i></span>
+    //       </span>
+    //     </div>
+    //   </div>
+    // </div>
+
     <div class="trend-entry d-flex">
       <div class="number align-self-start">{rank}</div>
       <div class="trend-contents">
         <h2>
-          <Link to ={'/blog/' + post.link}>{post.title}</Link>
+        <Link to ={'/blog/' + post.link}>{post.title}</Link>
         </h2>
         <div class="post-meta">
           <span class="d-block">
             <a href="#">{post.account.username}</a> in <a href="#">{post.types[0].name}</a>
+            <span class="mx-1">&bull;</span>
+            <span><i class="fa fa-heart" style={{ color: `${!isLoved ? 'gray' : 'red'}` }} onClick={ e => handleLover(e)} aria-hidden="true"></i></span>
           </span>
           <span class="date-read">
             {formatPublishDate(post.publishDate)}
-            <span class="mx-1">&bull;</span>
-            <span><i class="fa fa-heart" style={{ color: `${!isLoved ? 'gray' : 'red'}` }} onClick={ e => handleLover(e)} aria-hidden="true"></i></span>
           </span>
         </div>
       </div>
     </div>
+
   );
 };
 

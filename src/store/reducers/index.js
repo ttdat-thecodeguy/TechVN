@@ -5,12 +5,15 @@ import imageReducers from './imageReducers'
 import typeReducers from './typeReducers'
 import loadingReducers from './loadingReducers'
 
+import adminReducers from './adminReducers'
+
 const appReducers = combineReducers({
     userReducers,
     blogReducers,
     imageReducers,
     typeReducers,
-    loading: loadingReducers
+    loading: loadingReducers,
+    admin: adminReducers
 })
 
 export default appReducers

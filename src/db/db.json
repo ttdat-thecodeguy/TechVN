@@ -1,230 +1,233 @@
-{
-  
-  "blog_single": [
+﻿{
+	"types":[
     {
-      "title": "li",
-      "description": "sssss",
-      "content": "vvvvvv![img-upload](http://res.cloudinary.com/hcmusvnu/image/upload/v1629446289/cloudinary//blog/linux.png)",
-      "author": 15,
-      "image": 3,
-      "type": [],
-      "id": 1
-    }
-  ],
-  "blog_add": [],
-  "blogs": [
-    {
-      "id": 1,
-      "title": "Giới thiệu hệ điều hành linux",
-      "author": {
-        "id": 15,
-        "name": "admin",
-        "image": "avocado.jpg"
-      },
-      "description": "Các bạn đã nghe nói đến laravel hay magento vốn là những framework vô cùng nỗi tiếng của php",
-      "image": {
-        "id": 1,
-        "name": "image_default.png"
-      },
-      "content": "## **Hệ điều hành Linux là gì?**\n\n![img-upload](http://res.cloudinary.com/hcmusvnu/image/upload/v1629446289/cloudinary//blog/linux.png)\n\n  Sự độc bá của Windows và Mac OS không ngăn cản được những hệ điều hành phát triển. Hệ điều hành mã nguồn mở như Linux vẫn phát triển mạnh mẽ. Ngoài những chức năng thường, Linux còn sở hữu nhiều ưu điểm vượt trội khác. Chẳng hạn như:\n\n*   Không tốn nhiều chi phí mua bản quyền\n*   Tính bảo mật tương đối cao\n*   Tính linh hoạt\n*   Có thể hoạt động tốt trên các máy tính cấu hình yếu",
-      "types": [
-        {
-          "id": 2,
-          "name": "Back End"
-        },
-        {
-          "id": 3,
-          "name": "Front End"
-        },
-        {
-          "id": 9,
-          "name": "PHP"
+        "stt": 0,
+        "child": {
+            "id": 1,
+            "name": "Kiểm Thử Phần Mềm",
+            "description": "Kiểm thử phần mềm là phương pháp kiểm tra xem sản phẩm phần mềm đó trên thực tế có phù hợp với các yêu cầu đã đặt ra hay không, và đảm bảo rằng không có lỗi hay khiếm khuyết hỗ trợ bao gồm việc kiểm tra, phân tích, quan sát và đánh giá các khía cạnh khác nhau của sản phẩm. Người kiểm thử phần mềm (Tester) sử dụng kết hợp các công cụ thủ công và tự động",
+            "level": 1,
+            "path": "1-kiem-thu-phan-mem"
         }
-      ],
-      "publish_date": "2021-08-21T05:49:15.000+00:00"
-    }
-  ],
-  "types": [
-    {
-      "id": 1,
-      "name": "Server"
     },
     {
-      "id": 2,
-      "name": "Back End"
-    },
-    {
-      "id": 3,
-      "name": "Front End"
-    },
-    {
-      "id": 4,
-      "name": "Computing"
-    },
-    {
-      "id": 5,
-      "name": "Math"
-    },
-    {
-      "id": 6,
-      "name": "AI"
-    }
-  ],
-  "toplike": [
-    {
-      "id": 1,
-      "title": "Giới thiệu tổng quan về php",
-      "description": "PHP là một ngôn ngữ lập trình server-side, hôm nay mình sẽ giới thiệu về PHP",
-      "image": {
-        "id": 1,
-        "name": "image_default.png"
-      },
-      "publish_date": "2021-08-21T05:49:15.000+00:00",
-      "statView": 0,
-      "statLove": 0,
-      "author": {
-        "id": 15,
-        "name": "admin"
-      },
-      "types": [
-        {
-          "id": 2,
-          "name": "Back End"
-        },
-        {
-          "id": 3,
-          "name": "Front End"
-        },
-        {
-          "id": 9,
-          "name": "PHP"
+        "stt": 1,
+        "child": {
+            "id": 2,
+            "name": "Back End",
+            "description": "Backend là những công việc giao tiếp với server, database",
+            "level": 1,
+            "path": "2-back-end"
         }
-      ]
     },
     {
-      "id": 2,
-      "title": "Framework của php",
-      "description": "Các bạn đã nghe nói đến laravel hay magento vốn là những framework vô cùng nỗi tiếng của php",
-      "image": {
-        "id": 1,
-        "name": "image_default.png"
-      },
-      "publish_date": "2021-08-21T05:49:15.000+00:00",
-      "statView": 0,
-      "statLove": 0,
-      "author": {
-        "id": 15,
-        "name": "admin"
-      },
-      "types": [
-        {
-          "id": 2,
-          "name": "Back End"
-        },
-        {
-          "id": 3,
-          "name": "Front End"
-        },
-        {
-          "id": 9,
-          "name": "PHP"
+        "stt": 2,
+        "child": {
+            "id": 3,
+            "name": "Front End",
+            "description": "Phần front-end của một trang web là phần tương tác với người dùng sử dụng Html, css, javascript để tạo nên một trang web",
+            "level": 1,
+            "path": "3-front-end"
         }
-      ]
-    }
-  ],
-  "images": [
-    {
-      "id": 1,
-      "name": "image_default.png"
     },
     {
-      "id": 2,
-      "name": "spring_boot.png"
-    },
-    {
-      "id": 3,
-      "name": "linux.png"
-    },
-    {
-      "id": 4,
-      "name": "PHP_laravel.png"
-    }
-  ],
-  "trending": [
-    {
-      "id": 1,
-      "title": "Giới thiệu tổng quan về php",
-      "image": {
-        "id": 1,
-        "name": "image_default.png"
-      },
-      "publish_date": "2021-08-21T05:49:15.000+00:00",
-      "statView": 0,
-      "statLove": 0,
-      "author": {
-        "id": 15,
-        "name": "admin"
-      },
-      "types": [
-        {
-          "id": 2,
-          "name": "Back End"
-        },
-        {
-          "id": 3,
-          "name": "Front End"
-        },
-        {
-          "id": 9,
-          "name": "PHP"
+        "stt": 3,
+        "child": {
+            "id": 4,
+            "name": "Kiểm Thử Hệ Thống",
+            "description": "Kiểm thử các hệ thống server",
+            "level": 1,
+            "path": "4-kiem-thu-he-thong"
         }
-      ]
     },
     {
-      "id": 2,
-      "title": "Lập Trình UNIX",
-      "image": {
-        "id": 1,
-        "name": "image_default.png"
-      },
-      "publish_date": "2021-08-21T05:49:15.000+00:00",
-      "statView": 0,
-      "statLove": 0,
-      "author": {
-        "id": 15,
-        "name": "admin"
-      },
-      "types": [
-        {
-          "id": 2,
-          "name": "Server"
-        },
-        {
-          "id": 3,
-          "name": "Linux"
-        },
-        {
-          "id": 9,
-          "name": "Code"
+        "stt": 4,
+        "child": {
+            "id": 5,
+            "name": "Kiểm Thử Tự Động",
+            "description": "Kiểm thử sử dụng các công cụ tự động",
+            "level": 1,
+            "path": "5-kiem-thu-tu-dong"
         }
-      ]
-    }
-  ],
-  "users": [
-    {
-      "isSocialLogin": 0,
-      "email": "123@gmail.com",
-      "password": "$2a$10$Z3tO9o5eHBgjpTdTZCPaGeRsZ9ujjriEN85vQFzRfnW0.HWsKUz6i",
-      "fullName": "aaaa",
-      "phone": "0987654321",
-      "brief": "tôi yêu thích Spring boot, PHP và web development",
-      "image": "avocado.jpg",
-      "id": 1
     },
     {
-      "email": "admin@123.com",
-      "password": "$2a$10$E0Xene6XlKQGJpsVKB4myOeVllJC451WGHGB6hjRATV2ZaqmomKJa",
-      "id": 2
+        "stt": 5,
+        "child": {
+            "id": 6,
+            "name": "DevOps",
+            "description": "DevOps là một thuật ngữ để chỉ một tập hợp các hành động trong đó nhấn mạnh sự hợp tác và trao đổi thông tin của các lập trình viên và chuyên viên tin học khi cùng làm việc để tự động hóa quá trình chuyển giao sản phẩm phần mềm và thay đổi kiến trúc hệ thống",
+            "level": 1,
+            "path": "6-devops"
+        }
+    },
+    {
+        "stt": 6,
+        "child": {
+            "id": 7,
+            "name": "Chuyện Trong Nghề",
+            "description": "Chuyện Người Trong Nghề là nơi chia sẻ chuyện người, chuyện nghề trong ngành Công Nghê",
+            "level": 3,
+            "path": "7-chuyen-trong-nghe"
+        }
+    },
+    {
+        "stt": 7,
+        "child": {
+            "id": 8,
+            "name": "Review Công Ty",
+            "description": "Chuyên Mục Review Các công ty",
+            "level": 3,
+            "path": "8-review-cong-ty"
+        }
+    },
+    {
+        "stt": 8,
+        "child": {
+            "id": 9,
+            "name": "PHP",
+            "description": "Công cụ mạnh mẽ hỗ trợ lập trình trang web",
+            "level": 1,
+            "path": "9-php"
+        }
+    },
+    {
+        "stt": 9,
+        "child": {
+            "id": 10,
+            "name": "Spring Boot",
+            "description": "Công cụ mạnh mẽ hỗ trợ lập trình backend",
+            "level": 1,
+            "path": "10-spring-boot"
+        }
+    },
+    {
+        "stt": 10,
+        "child": {
+            "id": 11,
+            "name": "Linux",
+            "description": "Linux là một họ các hệ điều hành tự do nguồn mở tương tự Unix và dựa trên Linux kernel, rất mạnh mẽ ",
+            "level": 1,
+            "path": "11-linux"
+        }
+    },
+    {
+        "stt": 11,
+        "child": {
+            "id": 12,
+            "name": "Build PC",
+            "description": "Hỗ Trọ Build PC Phục vụ nhiều mục đích",
+            "level": 2,
+            "path": "12-build-pc"
+        }
     }
-  ]
+], "users": [
+    {
+        "stt": 0,
+        "child": {
+            "username": "admin",
+            "fullName": "Trương Thành Đạt",
+            "brief": "Mình rất yêu thích những thứ liên quan đến công nghệ",
+            "email": "123@gmail.com",
+            "image": "image_default.jpg",
+            "status": 1,
+            "role": {}
+        }
+    },
+    {
+        "stt": 1,
+        "child": {
+            "username": "user123",
+            "fullName": null,
+            "brief": null,
+            "email": "abc@123.com",
+            "image": "image_default.jpg",
+            "status": 1,
+            "role": {}
+        }
+    }
+	],"blogs":[
+    {
+        "stt": 0,
+        "child": {
+            "id": 1,
+            "title": "Giởi thiệu tổng quan về php",
+            "publishDate": "2021-08-21T05:49:15.000+00:00",
+            "statView": 0,
+            "statLove": 0,
+            "link": "1-gioi-thieu-tong-quan-ve-php",
+            "types": [
+                {
+                    "id": 2,
+                    "name": "Back End"
+                },
+                {
+                    "id": 9,
+                    "name": "PHP"
+                },
+                {
+                    "id": 3,
+                    "name": "Front End"
+                }
+            ],
+            "account": {
+                "id": 15,
+                "username": "admin",
+                "image": "image_default.jpg"
+            }
+        }
+    },
+    {
+        "stt": 1,
+        "child": {
+            "id": 95,
+            "title": "Giới thiệu hệ điều hành linux",
+            "publishDate": "2021-09-03T15:29:02.000+00:00",
+            "statView": 0,
+            "statLove": 0,
+            "link": "95-gioi-thieu-he-dieu-hanh-linux",
+            "types": [
+                {
+                    "id": 1,
+                    "name": "Kiểm Thử Phần Mềm"
+                },
+                {
+                    "id": 2,
+                    "name": "Back End"
+                }
+            ],
+            "account": {
+                "id": 15,
+                "username": "admin",
+                "image": "image_default.jpg"
+            }
+        }
+    },
+    {
+        "stt": 2,
+        "child": {
+            "id": 105,
+            "title": "Giới thiệu hệ điều hành Windows XXX",
+            "publishDate": "2021-09-03T15:44:35.000+00:00",
+            "statView": 0,
+            "statLove": 0,
+            "link": "105-gioi-thieu-he-dieu-hanh-windows-xxx",
+            "types": [
+                {
+                    "id": 2,
+                    "name": "Back End"
+                },
+                {
+                    "id": 1,
+                    "name": "Kiểm Thử Phần Mềm"
+                }
+            ],
+            "account": {
+                "id": 15,
+                "username": "admin",
+                "image": "image_default.jpg"
+            }
+        }
+    }]
+
+
 }

@@ -28,10 +28,7 @@ const Navbar = (props) => {
       payload: true
     });
     dispatch(getTypeRequest())
-    if(auth){
-      dispatch(getBlogLovedRequest())
-    }
-  },[auth, dispatch])
+  },[])
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -151,39 +148,21 @@ const Navbar = (props) => {
                             aria-labelledby="notificationBtn"
                           >
                             <div>Thông Báo</div>
-                            <a class="row dropdown-item noti-item" href="#">
+
+                            <a class="row dropdown-item noti-item" href="/" >
                               <div class="col-6">
                                 <img
                                   className="img-responsive"
                                   src="https://static.remove.bg/remove-bg-web/8fb1a6ef22fefc0b0866661b4c9b922515be4ae9/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
+                                  alt="user-sample"
                                 />
                               </div>
                               <div class="col-6">
                                 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
                               </div>
                             </a>
-                            <a class="row dropdown-item noti-item" href="#">
-                              <div class="col-6">
-                                <img
-                                  className="img-responsive"
-                                  src="https://static.remove.bg/remove-bg-web/8fb1a6ef22fefc0b0866661b4c9b922515be4ae9/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
-                                />
-                              </div>
-                              <div class="col-6">
-                                HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-                              </div>
-                            </a>
-                            <a class="row dropdown-item noti-item" href="#">
-                              <div class="col-6">
-                                <img
-                                  className="img-responsive"
-                                  src="https://static.remove.bg/remove-bg-web/8fb1a6ef22fefc0b0866661b4c9b922515be4ae9/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png"
-                                />
-                              </div>
-                              <div class="col-6">
-                                HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-                              </div>
-                            </a>
+                           
+                            
                           </div>
                         </Link>
                       </li>
@@ -199,7 +178,7 @@ const Navbar = (props) => {
                           >
                             <img
                               src={
-                                auth.isSocialLogin === null
+                                auth.isSocialLogin === null || auth.isSocialLogin === 0
                                   ? IMG_URL_ACCOUNT + auth.user.image
                                   : auth.user.image
                               }

@@ -5,6 +5,8 @@ import TrendingLoader from "../Loader/HomePage/TrendingListLoader";
 import SliderLoader from "../Loader/HomePage/SliderLoader";
 import { useSelector } from "react-redux";
 import { mapLovedBlog } from "../../store/selector/lovedSelector"
+import { isAuth } from '../../store/selector/authSelector'
+
 const TopLikeLazy = lazy(() => import("../../components/HomePage/TopLike"));
 const SliderLazy = lazy(() => import("../../components/HomePage/SliderList"));
 const TrendingLazy = lazy(() =>
@@ -13,7 +15,9 @@ const TrendingLazy = lazy(() =>
 
 const HomePage = () => {
   const [ loved ] = useSelector(state => [ mapLovedBlog(state) ])
-
+  const [  auth  ] = useSelector(state => [
+    isAuth(state)
+  ])
   return (
     <>
       <div class="container">

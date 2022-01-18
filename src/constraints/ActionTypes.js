@@ -42,3 +42,9 @@ export const UPLOAD_IMAGE = "upload image"
 /// GET TYPE
 export const GET_TYPE = "get type"
 export const GET_TYPE_BY_LEVEL = "get type by level"
+
+/// admin
+
+export const GET_USERS = "get all user"
+export const GET_BLOGS = "get all blogs" 
+

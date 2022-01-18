@@ -26,6 +26,7 @@ export const getCateBlog = (start, size, isAscDate, isAscTitle, cate_id) => {
     return axiosInstance.get(`/api/blog/categories?start=${start}&size=${size}&isAscDate=${isAscDate}&isAscTitle=${isAscTitle}&cate_id=${cate_id}`)
 }
 
+
 export const searchBlog = (start, size, isAscDate, isAscTitle, searchName, cate_id) => {
     return axiosInstance.get(`/api/blog/search?start=${start}&size=${size}&isAscDate=${isAscDate}&isAscTitle=${isAscTitle}&searchName=${searchName}&cate_id=${cate_id}`)
 }

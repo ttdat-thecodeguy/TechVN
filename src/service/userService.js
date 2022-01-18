@@ -6,18 +6,6 @@ import * as AuthNotiTypes from '../constraints/NotificationTypes'
 
 
 /// auth
-
-/*
-    googleId: "103799801484188551990"
-    imageUrl: "https://lh3.googleusercontent.com/a/AATXAJw7-mFIJD8dq4qJiMMnjV-284k6kPxjDnktNg29=s96-c"
-    email: "ttdat17ck1@gmail.com"
-    name: "Đạt Trương Thành"
-    givenName: "Đạt"
-    familyName: "Trương Thành"
-*/
-
-
-
 export const saveTokenToStorage = req => {
     localStorage.setItem('user', JSON.stringify(req))
 }

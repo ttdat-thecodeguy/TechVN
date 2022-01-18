@@ -1,0 +1,113 @@
+body {
+    font-family: "Lato", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+  }
+.list-group-item{
+    border: none;
+}
+  .sidenav {
+    width: 220px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding: 8px 0;
+    height: 100%;
+    box-shadow: 0 8px 60px 0 rgba(103, 151, 255, .11), 0 12px 90px 0 rgba(103, 151, 255, .11);
+    transition: 0.5s;
+  }
+  .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    z-index:1;
+    display: none;
+  }
+  .openbtn{
+    border: none;
+    background: none;
+    font-size: 20px;
+    display: none;
+    width: fit-content(20em);
+  }
+  
+  .sidenav .active a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #fff;
+    display: block;
+    margin: -4px;
+    text-decoration: none;
+    border: none;
+  }
+  .sidenav .active a:hover{
+  	text-decoration: none;
+  	color: #fff;
+  	border: none;
+  }
+  
+  .mainAdmin {
+    margin-top: 10px;
+    margin-left: 240px; /* Same width as the sidebar + left position in px */
+    padding: 150px 10px;
+  }
+  
+  @media screen and (max-width: 450px) {
+    .sidenav {
+      width: 0;
+    }
+    .closebtn{
+      display: block;
+    }
+    .mainAdmin{
+      margin-left: 0;
+    }
+    .openbtn{
+      display: block;
+    }
+    
+  } 
+  /*iphone ngang (736 x 414)*/
+  @media screen and (max-width: 736px) {
+    .icon {margin-left: 25%;}
+    .ql-container{
+        width: 550px;
+    }
+  }
+  
+  .ql-container{
+      margin: 0 30px;
+      width: 400px;
+  }
+  .icon{
+
+      border-radius: 50%;
+      padding: 30px;
+      color: #fff;
+  }
+  .fa-book{
+      background-color: rgb(196, 68, 255);
+  }
+  .fa-user{
+      background-color: rgb(240, 57, 57);
+  }
+  .ql-container:hover{
+      text-decoration: none;
+  }
+  .fa-database{
+    background-color: rgb(77, 195, 126);
+  }
+  .sign-up-btn{
+      bottom: 5%;
+      left:20%;
+      position: absolute;
+  }
+  .text-sm{
+      font-size: 12px !important;
+  }

@@ -10,7 +10,13 @@ import CateBlog from "../container/Cate";
 import Error from "../container/Error";
 import * as ErrorTypes from "../constraints/ErrorType"
 
-const routes = [
+import AdminDashboard from "../container/Admin";
+import UserDashboard from "../container/Admin/User";
+import BlogsDashboard from "../container/Admin/Blog";
+import TagsDashboard from "../container/Admin/Tags";
+
+
+export const routes = [
   {
     path: "/",
     exact: true,
@@ -26,8 +32,14 @@ const routes = [
     exact: false,
     main: () => <Register />,
   },
+ 
   {
     path: "/danh-sach-blog",
+    exact: true,
+    main: () => <CateBlog />
+  },
+  {
+    path: "/danh-sach-blog/:searchName",
     exact: false,
     main: () => <CateBlog />
   },
@@ -87,4 +99,30 @@ const routes = [
     main: () => <Error error={ErrorTypes.NOT_FOUND} />,
   },
 ];
-export default routes;
+
+export const AdminRoutes = [
+  {
+    path: "/admin",
+    exact: true,
+    main: ({ match, history }) => <AdminDashboard match={match} />
+  },
+  {
+    path: "/admin/user/",
+    exact: false,
+    main: ({ match, history }) => <UserDashboard match={match} />
+  },
+  {
+    path: "/admin/blog/",
+    exact: false,
+    main: ({ match, history }) => <BlogsDashboard match={match} />
+  },
+  {
+    path: "/admin/tag/",
+    exact: false,
+    main: ({ match, history }) => <TagsDashboard match={match} />
+  },
+
+
+
+];
+
