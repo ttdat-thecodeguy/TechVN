@@ -55,3 +55,17 @@ export const editorConfig = {
     },
     licenseKey: "",
   };
+
+  ///// CHART 
+
+
+  export const ColumnDefaultOptions = {
+    maintainAspectRatio: false,
+    responsive: false,
+  };
+
+  export const SUCCESS = { id: 1, name : "Thành Công" };
+  export const DANGER = { id: 2, name : "Cảnh Báo" };
+  export const PENDING = { id: 3, name : "Đang Chờ" };
+  export const MAIN_URL = `http://localhost:5000`
+  export const WS_MESSAGE = `${MAIN_URL}/ws-message`;

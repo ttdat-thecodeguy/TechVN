@@ -14,7 +14,9 @@ const initState = {
     size: 0,
     type: {},
   },
-  blogs: [],
+  blog: [],
+  comments: [],
+  same_cate: [],
   loved: []
 };
 
@@ -24,7 +26,10 @@ const blogReducers = (state = initState, action) => {
     case Types.GET_RECOMMEND:
       return { ...state, recommend: action.payload };
     case Types.GET_BLOG:
-      return { ...state, blogs: action.payload };
+      return { ...state, 
+        blog: action.payload.blog,
+        comments: action.payload.blog.comments,
+        same_cate: action.payload.same_cate };
     case Types.GET_TOP_LOVE:
       return { ...state, toplike: {
         list: action.payload.blogs,
@@ -43,14 +48,16 @@ const blogReducers = (state = initState, action) => {
         list: action.payload.blogs,
         page: action.payload.page,
         size: action.payload.size,
-        type: {}
+        type: action.payload.types
       }};
     case Types.GET_BLOGS_LOVED:
       return {...state, loved: action.payload}
     case Types.GET_TRENDING_BLOG:
         return {...state, trend: action.payload}
     case Types.ADD_BLOG:
-      return {...state, blogs: [...state.blogs, action.payload]};
+      return {...state, blog: [...state.blog, action.payload]};
+    case Types.ADD_COMMENT:
+      return {...state, comments: [...state.comments, action.payload]}
     default:
       return state;
   }

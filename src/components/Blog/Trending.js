@@ -39,9 +39,9 @@ export const Trending = (props) => {
         </h2>
         <div class="post-meta">
           <span class="d-block">
-            <a href="#">{post.account.username}</a> in <a href="#">{post.types[0].name}</a>
+            <span>{post.account.username}</span> Trong <span>{post.types[0].name}</span>
             <span class="mx-1">&bull;</span>
-            <span><i class="fa fa-heart" style={{ color: `${!isLoved ? 'gray' : 'red'}` }} onClick={ e => handleLover(e)} aria-hidden="true"></i></span>
+            <span><i className="fa fa-heart" style={{ color: `${!isLoved ? 'gray' : 'red'}` }} onClick={ e => handleLover(e)} aria-hidden="true"></i></span>
           </span>
           <span class="date-read">
             {formatPublishDate(post.publishDate)}

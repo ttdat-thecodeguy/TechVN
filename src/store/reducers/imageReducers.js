@@ -7,7 +7,7 @@ const imageReducers = (state = initState, action) => {
         case Types.GET_IMAGE:
             return action.payload
         case Types.UPLOAD_IMAGE:
-            break;
+            return state.push(...action.payload);
         default:
             return state;
     }

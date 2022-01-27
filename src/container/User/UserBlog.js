@@ -10,7 +10,7 @@ const UserBlog = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllBlogOfAccountRequest());
-  }, []);
+  }, [dispatch]);
 
   const [blogs] = useSelector((state) => [state.userReducers.blogs]);
 

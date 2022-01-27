@@ -63,3 +63,6 @@ export const formatError = err => {
     }
 }
 
+export const getAllNotification = (start, size) => {
+    return axiosInstance.get(`/api/account/notification?start=${start}&size=${size}`)
+}

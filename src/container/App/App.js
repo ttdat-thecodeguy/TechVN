@@ -11,10 +11,12 @@ import { isAuth } from "../../store/selector/authSelector";
 import { InterceptorError } from "../../service/axiosInstance";
 import "./App.css";
 
+import NetworkError from "../Error/NetworkError";
+
 const App = (props) => {
   InterceptorError(props.history);
 
-  const showContent = (routes) => {
+  const showContent = (routes, auth) => {
     var result = null;
     if (routes.length > 0) {
       result = routes.map((route, idx) => {
@@ -24,6 +26,7 @@ const App = (props) => {
             path={route.path}
             exact={route.exact}
             component={route.main}
+            auth={auth}
           ></Route>
         );
       });
@@ -35,20 +38,20 @@ const App = (props) => {
     state.loading,
     isAuth(state)
   ]);
-  const rgxAdmin = new RegExp("\/admin\/[\w]*");
+  const rgxAdmin = new RegExp("/admin/[w]*");
 
   return (
     <div class="site-wrap">
       {isLoading && <Loader />}
-      { rgxAdmin.test(props.history.location.pathname) ? (
+      { props.history.location.pathname === "/network-error" ? <NetworkError></NetworkError> : rgxAdmin.test(props.history.location.pathname) ? (
         <>
           <AdminHeader history={props.history} auth={auth} />
-            <div className="mainAdmin" id="mainAdmin">{showContent(AdminRoutes)}</div>
+            <div className="mainAdmin" id="mainAdmin">{showContent(AdminRoutes, auth)}</div>
         </>
       ) : (
         <>
           <Header history={props.history} auth={auth} />
-            {showContent(routes)}
+            {showContent(routes, auth)}
           <Footer />
         </>
       )}

@@ -111,3 +111,48 @@ body {
   .text-sm{
       font-size: 12px !important;
   }
+  .admin_dashboard .card-ui{
+    
+  }
+
+  .widget-heading {
+    opacity: .8;
+    font-weight: bold;
+}
+.widget-content {
+    padding: 1rem;
+    flex-direction: row;
+    align-items: center;
+}
+.widget-content .widget-content-right {
+    margin-left: auto;
+}
+.bg-midnight-bloom {
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%) !important;
+}
+.bg-arielle-smile {
+    background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%) !important;
+}
+.bg-grow-early {
+    background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%) !important;
+}
+.widget-content .widget-numbers {
+    font-weight: bold;
+    font-size: 1.8rem;
+    display: block;
+}
+.text-white {
+    color: #fff !important;
+}
+.d-inline-grid{
+  display: inline-grid;
+}
+.flex-d-row{
+  flex-direction: row;
+}
+.h-main{
+  height: auto;
+}
+.border-widget{
+  border: 10px solid black;
+}

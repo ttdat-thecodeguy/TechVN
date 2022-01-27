@@ -1,3 +1,4 @@
+import { startCase } from "lodash";
 import * as Types from "../../constraints/ActionTypes";
 import * as UserServices from "../../service/userService";
 
@@ -64,10 +65,6 @@ export const loginActionRequest = (req, isRememberMe, history) => {
 export const loginSocialActionRequest = (req, history) => {
   return dispatch => {
     UserServices.loginSocialService(req).then(res => {   
-
-      
-      
-
       dispatch({
         type: Types.USER_LOGIN_SUCCESSFUL,
         payload: res.data,
@@ -96,9 +93,6 @@ export const loginSocialActionRequest = (req, history) => {
   }
 }
 
-
-
-
 export const logoutActionRequest = (history) => {
   return dispatch => {
     dispatch({
@@ -106,7 +100,6 @@ export const logoutActionRequest = (history) => {
     })
     localStorage.removeItem("user")
     history.push("/")
-
   }
 }
 
@@ -120,3 +113,15 @@ export const getAllBlogOfAccountRequest = () => {
     })
   }
 }
+
+export const getAllNotificationRequest = (start, size) => {
+  return dispatch => {
+    UserServices.getAllNotification(start, size).then(res => {
+      dispatch({
+        type: Types.USER_NOTIFICATION,
+        payload: res.data
+      })
+    })
+  }
+}
+

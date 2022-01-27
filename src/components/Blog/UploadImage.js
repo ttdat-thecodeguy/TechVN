@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import * as Config from "../../constraints/Config";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { isEmpty } from "lodash";
-import { getImageTestingRequest } from "../../store/action/imageAction";
-var FormData = require("form-data");
+import { uploadImageRequest } from "../../store/action/imageAction";
+import { loadAction } from '../../store/action/loadingAction'
+
 
 Modal.setAppElement("#root");
 
@@ -33,6 +34,7 @@ const UploadImage = (props) => {
   // ]
 
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
   const handleAddImage = () => {
     let countImgChoose = 0;
@@ -86,9 +88,11 @@ const UploadImage = (props) => {
 
     // var sendData = new FormData();
     // Array.from(images).forEach((file) => sendData.append("images", file));
-    var sendData = new FormData();
-    Array.from(e.target.files).forEach((file) => sendData.append("files", file));
-    
+    // var sendData = new FormData();
+    // Array.from(e.target.files).forEach((file) => sendData.append("files", file));
+    dispatch(loadAction(true))
+    dispatch(uploadImageRequest(e.target.files));
+    setImgStyle([...imgStyle, {}])
   }
 
   useEffect(() => {
@@ -121,7 +125,7 @@ const UploadImage = (props) => {
           props.listImage !== null &&
           props.listImage.map((image, idx) => {
             return (
-              <div class="col-3">
+              <div class="col-2">
                 <img
                   class="img-responsive img-upload mb-2"
                   onClick={(e) => handleChangeStyleImage(e, idx)}

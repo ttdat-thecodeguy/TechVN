@@ -2002,20 +2002,6 @@ a:hover {
   border-color: #ff6f68;
 }
 
-@media only screen and (max-width: 480px) {
-  .notfound .notfound-404 {
-    position: relative;
-    height: 168px;
-  }
-
-  .notfound .notfound-404 h1 {
-    font-size: 142px;
-  }
-
-  .notfound h2 {
-    font-size: 22px;
-  }
-}
 
 .blog-details-section{
   background-color: rgb(252, 252, 252);
@@ -2053,7 +2039,6 @@ a:hover {
     color: #fff;
 }
 .noti-item{
-  background-color: rgb(217, 230, 253);
   word-wrap: break-word;
   white-space: initial;
   font-size: 12px;
@@ -2282,8 +2267,7 @@ input[type="file"] {
 b, strong {
   font-weight: bold;
 }
-.icon-statView{
-}
+
 .icon-search{
   color: #000;
 }
@@ -2299,10 +2283,54 @@ b, strong {
   margin-left: 220px; /* Same width as the sidebar + left position in px */
   padding: 0;
 }
+.img-upload{
+  width: 70%;
+}
+.unlogin-container{
+  margin: 0 auto;
+  width: fit-content;
+}
+.text-12{
+  font-size: 12px;
+}
+.bg-unreaded {
+  background-color: rgb(217, 230, 253);
+}
+
 @media screen and (max-width: 450px) {
  
   .mainAdmin{
     margin-left: 50px;
   }
-  
 } 
+@media only screen and (max-width: 1200px) {
+  .cate-content ul li a{
+    font-size: 13px;
+  }
+  .notfound .notfound-404 {
+    position: relative;
+    height: 168px;
+  }
+  .num-noti{
+    position: absolute;
+    top: 78%;
+  }
+  #notificationBtn[aria-expanded="true"] .num-noti{
+    position: absolute;
+    top: 60%;
+  }
+  .user-fn{
+    display: -webkit-inline-box;
+  }
+  .notfound .notfound-404 h1 {
+    font-size: 142px;
+  }
+
+  .notfound h2 {
+    font-size: 22px;
+  }
+  #avatarMenu[aria-expanded="true"] .num-noti{
+    position: absolute;
+    top: 10%;
+  }
+}

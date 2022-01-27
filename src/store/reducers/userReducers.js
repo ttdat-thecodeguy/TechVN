@@ -8,7 +8,12 @@ const initState = {
   isLoading: false,
   hasError: true,
   user: {},
-  blogs: []
+  blogs: [],
+  notification: {
+    content: [],
+    page: 0,
+    size: 0
+  }
 };
 
 const authReducers = (state = initState, action) => {
@@ -34,6 +39,12 @@ const authReducers = (state = initState, action) => {
       return {...state, auth:{}}
     case Types.GET_BLOGS_OF_USER:
       return {...state, blogs: action.payload}
+    case Types.USER_NOTIFICATION:
+      return {...state, notification: {
+        content: action.payload.content,
+        page: action.payload.page,
+        size: action.payload.size
+      }}
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import React, { useEffect, lazy, Suspense } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { withRouter } from "react-router-dom";
@@ -8,33 +8,41 @@ import TrendingLoader from "../Loader/HomePage/TrendingListLoader";
 import BlogDetails from "../../components/Blog/BlogDetails";
 import { getBlogByNameRequest } from "../../store/action/blogAction";
 import * as Types from "../../constraints/ActionTypes";
+import { isAuth } from "../../store/selector/authSelector";
+import { loadAction } from "../../store/action/loadingAction";
+import $ from "jquery"
 
 const TrendingLazy = lazy(() =>
   import("../../components/HomePage/TrendingList")
 );
 
+
+
 const Blog = (props) => {
+  
   const dispatch = useDispatch();
   let { name } = useParams();
 
+
+  const [auth] = useSelector((state) => [
+    isAuth(state)
+  ]);
+  const [blog, same_cate] = useSelector((state) => [state.blogReducers.blog,
+    state.blogReducers.same_cate]);
+  
   useEffect(() => {
     let l_name = name.split("-");
     if (l_name.length <= 1 || isNaN(parseInt(l_name[0])))
       props.history.push("/404");
-    dispatch({
-      type: Types.LOADING_TOGGLE,
-      payload: true
-    });
+    dispatch(loadAction(true));
     dispatch(getBlogByNameRequest(parseInt(l_name[0]), props.history));
   }, [dispatch, name, props.history]);
-  const [blog] = useSelector((state) => [state.blogReducers.blogs]);
-
   return (
     <div className="blog-details-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 single-content">
-            <BlogDetails history={props.history} blog={blog} name={name} />
+            <BlogDetails history={props.history} auth={auth} blog={blog} name={name} />
           </div>
 
           <div class="col-lg-3">
@@ -42,38 +50,25 @@ const Blog = (props) => {
               <TrendingLazy />
             </Suspense>
 
+          { blog !== undefined && blog.types !== undefined && <>
             <div class="section-title">
-              <h2>MongoDB</h2>
+              <h2>{blog.types[0].name}</h2>
             </div>
 
             <div class="trend-entry d-flex">
               <ul>
+                { same_cate.length !== 0 && same_cate.map(sb => 
                 <li>
+                  <Link to={`/blog/${sb.path}`}>
                   <h2>
-                    Hướng dẫn sao lưu, khôi phục data mongo (mongodump,
-                    mongorestore)
+                    {sb.title}
                   </h2>
-                </li>
-                <li>
-                  <h2>
-                    Hướng dẫn sao lưu, khôi phục data mongo (mongodump,
-                    mongorestore)
-                  </h2>
-                </li>
-                <li>
-                  <h2>
-                    Hướng dẫn sao lưu, khôi phục data mongo (mongodump,
-                    mongorestore)
-                  </h2>
-                </li>
-                <li>
-                  <h2>
-                    Hướng dẫn sao lưu, khôi phục data mongo (mongodump,
-                    mongorestore)
-                  </h2>
-                </li>
+                  </Link>                  
+                </li>) }               
               </ul>
-            </div>
+            </div>           
+          </> }
+
             <div
               class="fb-page"
               data-href="https://www.facebook.com/facebook"

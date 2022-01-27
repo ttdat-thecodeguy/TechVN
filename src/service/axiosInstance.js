@@ -1,8 +1,10 @@
 import axios from 'axios'
 import store from '../store'
+import { MAIN_URL } from '../constraints/Config'
 import { isAuth } from '../store/selector/authSelector'
+
 const axiosInstance = axios.create({
-    baseURL: `https://techblog-vn.herokuapp.com/`
+    baseURL: MAIN_URL
 })
 
 axiosInstance.interceptors.request.use(config => {
@@ -19,6 +21,11 @@ export const InterceptorError = (store, history) => {
     axiosInstance.interceptors.response.use(response => {
         return response;
     }, error => {
+
+        // if(!error.status){
+        //     window.location = "/network-error"
+        // }
+
         if(error.response.status === 403){
             history.push('/403')
         }

@@ -5,7 +5,7 @@ import { getAllUsersRequest } from '../../../store/action/adminAction'
 import { loadAction } from '../../../store/action/loadingAction'
 
 import TableFile from "../../../components/TableFile";
-
+import * as Config from "../../../constraints/Config"
 
 import {
   Chart as ChartJS,
@@ -78,18 +78,7 @@ const UserDashboard = (props) => {
   
   const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart',
-      },
-    },
-  };
+
 
   const columnData = {
     labels,
@@ -103,15 +92,10 @@ const UserDashboard = (props) => {
     ],
   };
 
-  const Columnoptions = {
-    maintainAspectRatio: false,
-    responsive: false,
-  };
-  
   return (
     <>
       <TableFile columns={columns} dataTable={dataTable} title={"Danh Sách Người Dùng"} />
-      <Line options={Columnoptions}  data={columnData} width={400} height={400}  />
+      <Line options={Config.ColumnDefaultOptions}  data={columnData} width={400} height={400}  />
     </>
   );
 }

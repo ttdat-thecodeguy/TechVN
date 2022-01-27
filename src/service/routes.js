@@ -93,6 +93,7 @@ export const routes = [
     exact: false,
     main: () => <Error error={ErrorTypes.FORBIDDEN} />,
   },
+
   {
     path: "",
     exact: false,

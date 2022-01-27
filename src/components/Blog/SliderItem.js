@@ -29,7 +29,7 @@ const SliderItem = props => {
 
             <div class="post-meta">
               <span class="d-block">
-                <a href="#">{post.account.username}</a> in <a href="#">{post.types[0].name}</a>
+                <span>{post.account.username}</span> Trong <span>{post.types[0].name}</span>
               </span>
               <span class="date-read">
               {formatPublishDate(post.publishDate)} <span class="mx-1">&bull;</span>

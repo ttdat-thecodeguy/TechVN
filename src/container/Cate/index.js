@@ -6,15 +6,15 @@ import { getCategoriesBlogRequest, getBlogBySearchNameRequest } from "../../stor
 import { loadAction } from "../../store/action/loadingAction";
 
 import { Link, useParams } from "react-router-dom";
-
+import {isEmpty, isArray} from "lodash"
 const CateBlog = (props) => {
   const dispatch = useDispatch();
 
   //// init state
 
   let { id, searchName } = useParams();
-  let [page, setPage] = useState(0);
-  const [types, setTypes] = useSelector((state) => [state.typeReducers]);
+  let [page] = useState(0);
+  const [types] = useSelector((state) => [state.typeReducers]);
   const [cate] = useSelector((state) => [state.blogReducers.cate]);
 
   //sort
@@ -25,17 +25,12 @@ const CateBlog = (props) => {
   /// search
 
   const [searchContent, setSearchContent] = useState("")
+  const [search, setSearch] = useState("")
   const [errorSearchContent, setErrorSearchContent] = useState(null)
   const [isSearch, setIsSearch] = useState(false)
 
 
   useEffect(() => {
-
-    // if(searchName !== null){
-    //   setSearchContent(searchName)
-    //   setIsSearch(true)
-    // }
-    
     if(searchName !== null && searchName !== undefined){
           setSearchContent(searchName)
           setIsSearch(true)
@@ -55,7 +50,7 @@ const CateBlog = (props) => {
         dispatch(getCategoriesBlogRequest(page, 8, isDateAscSort, isTitleAscSort, 0))
       }
     }
-  }, [dispatch, id, isDateAscSort, isSearch, isTitleAscSort, page, searchContent]);
+  }, [dispatch, id, isDateAscSort, isSearch, isTitleAscSort, page, searchContent, searchName]);
 
   /// type
 
@@ -99,11 +94,11 @@ const CateBlog = (props) => {
   }
 
   const handleSearch = () => {
-    if(searchContent === "") {
+    if(search === "") {
       setErrorSearchContent("Nội Dung Tìm Kiếm Không Được Rỗng")
     }
 
-    else if(searchContent.length <= 2) {
+    else if(search.length <= 2) {
       setErrorSearchContent("Nội Dung Tìm Kiếm Phải Lớn Hơn 2 Kí Tự")
     }
     else{
@@ -111,6 +106,7 @@ const CateBlog = (props) => {
       dispatch(getBlogBySearchNameRequest(page, 8, isDateAscSort, isTitleAscSort, id, searchContent))
       setErrorSearchContent(null)
       setIsSearch(true)
+      setSearchContent(search)
     }
 
     //check error
@@ -160,7 +156,7 @@ const CateBlog = (props) => {
   return (
     <>
       <div className="row mt-4">
-        <div class="col-3 ml-3 card">
+        <div class="col-lg-3 ml-3 card">
           <div class="card-body">
             <div class="d-flex">
               <svg
@@ -248,8 +244,8 @@ const CateBlog = (props) => {
                   type="text"
                   class="searchTerm"
                   placeholder="Tìm Kiếm Trong Danh Mục..."
-                  value={searchContent}
-                  onChange={e => setSearchContent(e.target.value)}
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
                   onKeyPress={e => handleSearchByKeyPress(e)}
                   onKeyDown={e => handleSearchByKeyPress(e)}
                 />
@@ -263,7 +259,7 @@ const CateBlog = (props) => {
 
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-lg-8">
           <div class="d-flex">
             <svg
               class="bd-placeholder-img rounded mr-2"
@@ -285,8 +281,9 @@ const CateBlog = (props) => {
             </div>}
             { id !== undefined && isSearch === false &&  <h5 style={{ textTransform: "uppercase" }}>{cate.type.name}</h5> }
             { id !== undefined && isSearch === true &&  <div>
+              {console.log(cate)}
               <h5 style={{ textTransform: "uppercase" }}>Tìm Kiếm Bài Viết: {searchContent}</h5>
-              <span>Trong <a href={`/danh-muc/${cate.type.id}/${cate.type.path}`}> {cate.type.name} </a></span>
+              { isArray(cate.type) === false ? <></> : <span>Trong <a href={`/danh-muc/${cate.type[0].id}/${cate.type[0].path}`}> {cate.type[0].name} </a></span> }  
             </div> }
 
           </div>

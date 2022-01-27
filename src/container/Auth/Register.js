@@ -6,7 +6,6 @@ import "./fonts/material-icon/css/material-design-iconic-font.min.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   registerActionRequest,
-  loadingToggleAction,
 } from "../../store/action/userAction";
 import Notification from "../../components/Notification";
 import * as NotiTypes from "../../constraints/NotificationTypes";
@@ -80,7 +79,7 @@ const Register = () => {
 
   useEffect(() => {
     if (hasError) setIsOpenModal(true);
-  }, []);
+  }, [hasError]);
 
   return (
     <section class="sign-in">

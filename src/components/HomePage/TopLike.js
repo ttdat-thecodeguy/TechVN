@@ -13,7 +13,7 @@ const TopLike = props => {
 
   useEffect(() => {
      dispatch(getTopLoveRequest(0))
-  },[])
+  },[dispatch])
 
   const showPostChild = posts => {
     let posts_child = posts.slice(1,4)

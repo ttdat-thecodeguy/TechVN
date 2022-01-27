@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import "../../container/Admin/Admin.css"
-import ReactDOM from 'react-dom'
 import $ from 'jquery';
-import { useState } from "react";
 
 
 const AdminHeader = () => {
@@ -33,7 +31,7 @@ const AdminHeader = () => {
                 height={50}
                 width={50}
                 class="rounded-circle"
-                alt=""
+                alt="avatar"
               />
             </div>
             <div class="col-9">
@@ -44,19 +42,19 @@ const AdminHeader = () => {
         </li>
 
         <li class="list-group-item   btn-link btn-menu">
-          <a href="#">Trang Chính</a>
+          <Link to={"/admin/"}>Trang Chính</Link>
         </li>
         <li class="list-group-item  btn-link btn-menu">
-          <a href="#">Danh Mục</a>
+          <Link to={"/admin/message-and-notification"}>Tin Thông Báo</Link>
         </li>
         <li class="list-group-item  btn-link btn-menu">
-          <a href="#">Tin</a>
+          <Link to={"/admin/contact"}>Liên Hệ</Link>
         </li>
         <li class="list-group-item  btn-link btn-menu">
-          <a href="#">Liên Hệ</a>
+          <Link to={"/admin/system"}>Tình Trạng Hệ thống</Link>
         </li>
         <li class="list-group-item  btn-link btn-menu">
-          <a href="#">Hệ thống</a>
+          <Link to={"/admin/config"}>Cấu Hình Hệ thống</Link>
         </li>
         <li class="sign-up-btn" style={{ fontWeight: 600 }}>
           <i class="fa fa-sign-out"></i> Đăng xuất

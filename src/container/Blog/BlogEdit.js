@@ -16,6 +16,7 @@ import Editor from "ckeditor5-custom-build/build/ckeditor";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 
 import {withRouter} from 'react-router-dom';
+import { loadAction } from "../../store/action/loadingAction";
 
 const BlogEdit = (props) => {
 
@@ -56,8 +57,6 @@ const BlogEdit = (props) => {
   const handleAdd = (e) => {
     e.preventDefault();
 
-  
-
     const blog = {
       content: contentBlog,
       description,
@@ -65,7 +64,7 @@ const BlogEdit = (props) => {
       title,
       types
     }
-
+    dispatch(loadAction(true))
     dispatch(addRequest(blog, props.history))    
   };
   
@@ -157,7 +156,6 @@ const BlogEdit = (props) => {
                   {type.name}
                 </label>
               </div>
-
               )
             }) }
            
