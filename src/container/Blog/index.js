@@ -7,16 +7,17 @@ import TrendingLoader from "../Loader/HomePage/TrendingListLoader";
 
 import BlogDetails from "../../components/Blog/BlogDetails";
 import { getBlogByNameRequest } from "../../store/action/blogAction";
-import * as Types from "../../constraints/ActionTypes";
-import { isAuth } from "../../store/selector/authSelector";
+
+import { isAuth } from "../../store/selector";
 import { loadAction } from "../../store/action/loadingAction";
-import $ from "jquery"
+import * as Config from "../../constraints/Config"
+
+import SockJS from "sockjs-client";
+import Stomp from "stompjs";
 
 const TrendingLazy = lazy(() =>
   import("../../components/HomePage/TrendingList")
 );
-
-
 
 const Blog = (props) => {
   
@@ -37,6 +38,12 @@ const Blog = (props) => {
     dispatch(loadAction(true));
     dispatch(getBlogByNameRequest(parseInt(l_name[0]), props.history));
   }, [dispatch, name, props.history]);
+
+
+  
+
+
+
   return (
     <div className="blog-details-section">
       <div class="container">

@@ -45,6 +45,11 @@ const authReducers = (state = initState, action) => {
         page: action.payload.page,
         size: action.payload.size
       }}
+    case Types.ADD_NOTIFICATION: 
+      console.log(action.payload)
+      return {...state, notification: {
+        content: [...state.notification.content, action.payload]
+      }}
     default:
       return state;
   }

@@ -4,19 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {
   logoutActionRequest,
-  getAllNotificationRequest
+  getAllNotificationRequest,
+  addNotificationRequest
 } from "../store/action/userAction";
 
 import { getTypeRequest } from "../store/action/typeAction";
 
-import { IMG_URL_ACCOUNT } from "../constraints/Config";
+import { IMG_URL_ACCOUNT, WS_MESSAGE } from "../constraints/Config";
 import { useEffect } from "react";
 import * as Types from "../constraints/ActionTypes";
+
 import ShowMoreText from "react-show-more-text";
 import { isEmpty } from "lodash";
 
+import SockJS from "sockjs-client";
+import Stomp from "stompjs";
+
 const Navbar = (props) => {
-  const { history, auth } = props;
+  const { history, auth, isLogin } = props;
 
   const dispatch = useDispatch();
 
@@ -32,10 +37,22 @@ const Navbar = (props) => {
       payload: true
     });
     dispatch(getTypeRequest());
-    dispatch(getAllNotificationRequest(0, 5));
-  }, [dispatch]);
 
-  console.log(notification);
+    if (isLogin) {
+      dispatch(getAllNotificationRequest(0, 5));
+      var sock = new SockJS(WS_MESSAGE);
+      let stompClient = Stomp.over(sock);
+      stompClient.connect(
+        { username: auth.user.content },
+        function (frame) {
+          
+          dispatch(addNotificationRequest(stompClient))
+        },
+        (err) => console.log(err)
+      );
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, isLogin]);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -165,7 +182,11 @@ const Navbar = (props) => {
                           aria-expanded="false"
                         >
                           <i class="fa fa-bell-o" aria-hidden="true"></i>
-                          <nav class="num-noti">{isEmpty(notification.content) !== true && notification.content.length }</nav> {/* nếu >99 = 99+ */}
+                          <nav class="num-noti">
+                            {isEmpty(notification.content) !== true &&
+                              notification.content.length}
+                          </nav>{" "}
+                          {/* nếu >99 = 99+ */}
                         </button>
                         <div
                           class="dropdown-menu noti-menu"
@@ -178,7 +199,12 @@ const Navbar = (props) => {
                           notification.content.length !== 0 ? (
                             notification.content.map((noti) => {
                               return (
-                                <a class={`row dropdown-item noti-item ${ noti.status === false && 'bg-unreaded' }`} href="/">
+                                <a
+                                  class={`row dropdown-item noti-item ${
+                                    noti.status === false && "bg-unreaded"
+                                  }`}
+                                  href="/"
+                                >
                                   <div class="col-3">
                                     <img
                                       className="img-fluid rounded-circle"
@@ -201,7 +227,8 @@ const Navbar = (props) => {
                                         className="content-css"
                                         anchorClass="my-anchor-css-class"
                                         expanded={false}
-                                        truncatedEndingComponent={"... "}>
+                                        truncatedEndingComponent={"... "}
+                                      >
                                         {noti.content}
                                       </ShowMoreText>
                                       <span>3 giờ trước</span>

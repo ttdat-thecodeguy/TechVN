@@ -2183,18 +2183,10 @@ a:hover {
     width: 100%;
   }
 }
-
-
-
-
-
-
 .cate-dropdown {
   float: left;
   overflow: hidden;
 }
-
-
 .cate-content {
   display: none;
   position: absolute;

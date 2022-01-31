@@ -1,4 +1,3 @@
-import { startCase } from "lodash";
 import * as Types from "../../constraints/ActionTypes";
 import * as UserServices from "../../service/userService";
 
@@ -119,9 +118,28 @@ export const getAllNotificationRequest = (start, size) => {
     UserServices.getAllNotification(start, size).then(res => {
       dispatch({
         type: Types.USER_NOTIFICATION,
-        payload: res.data
+        payload: res.data || []
       })
     })
   }
 }
 
+export const addNotificationRequest = (stompClient) => {
+  return dispatch => {
+    stompClient.subscribe("/users/queue/messages", (messeage) => {
+
+      const dataRecv = JSON.parse(messeage.body);
+      
+      dispatch({
+        type: Types.ADD_NOTIFICATION,
+        payload: {
+          content: dataRecv.content,
+          account_from: {
+            username: dataRecv.sender_username,
+            image: dataRecv.sender_image
+          },
+        } || {}
+      });
+    });
+  }
+}

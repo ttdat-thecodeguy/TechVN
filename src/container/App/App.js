@@ -7,7 +7,7 @@ import AdminHeader from "../../components/template/AdminHeader";
 
 import Loader from "../Loader";
 import { useSelector } from "react-redux";
-import { isAuth } from "../../store/selector/authSelector";
+import { isAuth } from "../../store/selector";
 import { InterceptorError } from "../../service/axiosInstance";
 import "./App.css";
 
@@ -33,7 +33,7 @@ const App = (props) => {
     }
     return <Switch>{result}</Switch>;
   };
-
+   
   const [isLoading, auth] = useSelector((state) => [
     state.loading,
     isAuth(state)
@@ -45,12 +45,12 @@ const App = (props) => {
       {isLoading && <Loader />}
       { props.history.location.pathname === "/network-error" ? <NetworkError></NetworkError> : rgxAdmin.test(props.history.location.pathname) ? (
         <>
-          <AdminHeader history={props.history} auth={auth} />
+          <AdminHeader history={props.history} auth={auth} isLogin={auth ? true : false} />
             <div className="mainAdmin" id="mainAdmin">{showContent(AdminRoutes, auth)}</div>
         </>
       ) : (
         <>
-          <Header history={props.history} auth={auth} />
+          <Header history={props.history} auth={auth} isLogin={auth ? true : false} />
             {showContent(routes, auth)}
           <Footer />
         </>

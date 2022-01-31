@@ -1,6 +1,7 @@
 export const USER_SUCCESS_REGISTER = "user register successful"
 export const USER_FAILURE_REGISTER = "user register failure"
 export const USER_NOTIFICATION = "user notification"
+export const ADD_NOTIFICATION = "add notification"
 /// login
 export const USER_LOGIN_SUCCESSFUL = "user login successful"
 export const USER_LOGIN_FAILURE ="user login failure"

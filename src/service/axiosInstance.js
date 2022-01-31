@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '../store'
 import { MAIN_URL } from '../constraints/Config'
-import { isAuth } from '../store/selector/authSelector'
+import { isAuth } from '../store/selector'
 
 const axiosInstance = axios.create({
     baseURL: MAIN_URL

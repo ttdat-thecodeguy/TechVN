@@ -156,6 +156,7 @@ export const addCommentRequest = (data, auth) => {
           publish_date: res.data.comment.publish_date
         }
       });
+      
     });
   };
 };

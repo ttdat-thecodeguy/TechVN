@@ -3,7 +3,7 @@ import React from "react";
 import Navbar from "../Navbar";
 
 const Header = props => {
-  const { history, auth } = props;
+  const { history, auth, isLogin } = props;
   return (
     <div class="header-top">
       <div class="container pt-3 pb-3">
@@ -40,7 +40,7 @@ const Header = props => {
         </div>
       </div>
 
-      <Navbar history={history} auth={auth} />
+      <Navbar history={history} auth={auth} isLogin={isLogin}/>
     </div>
   );
 };

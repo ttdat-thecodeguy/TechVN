@@ -68,11 +68,18 @@ const BlogDetails = (props) => {
 
   const handleComment = useCallback((e) => {
     e.preventDefault()
-    dispatch(loadAction(true))
-    dispatch(addCommentRequest({
+
+    const sendData = {
       content: comment,
-      blog_id: blog.id 
-    }, auth))},[auth, blog.id, comment, dispatch]);
+      blog_id: blog.id,
+      sender_username: auth.user.content,
+      sender_image: auth.user.image,
+      recv_username: blog.account.username
+    }
+
+    dispatch(loadAction(true))
+    if(blog !== undefined)
+        dispatch(addCommentRequest(sendData, auth))},[auth, blog, comment, dispatch]);
  
   return (
 
