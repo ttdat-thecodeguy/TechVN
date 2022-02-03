@@ -19,7 +19,7 @@ import ReactMarkdown from "react-markdown";
 
 import * as Config from "../../constraints/Config";
 import "../../container/Blog/styles.css"
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 ///action
 import { addCommentRequest } from "../../store/action/blogAction"
@@ -74,7 +74,8 @@ const BlogDetails = (props) => {
       blog_id: blog.id,
       sender_username: auth.user.content,
       sender_image: auth.user.image,
-      recv_username: blog.account.username
+      recv_username: blog.account.username,
+      recv_id: blog.account.id
     }
 
     dispatch(loadAction(true))
@@ -155,11 +156,12 @@ const BlogDetails = (props) => {
                     );
                   }) }
 
-                    { auth !== undefined && isEmpty(auth) === false ?  <li class="comment-form">
+                    { auth !== undefined && isEmpty(auth) === false ? auth.user.id !== blog.account.id ? 
+                    <li class="comment-form">
                     <div class="vcard bio">
                       <img class="rounded-circle" src={`${Config.IMG_URL_ACCOUNT + auth.user.image}`} alt="avatar" />
                     </div>
-                     <form>
+                      <form>
                       <div class="comment-body">
                         <div class="form-group">
                           <label for="message">Nội Dung</label>
@@ -180,10 +182,8 @@ const BlogDetails = (props) => {
                           value="Nhận Xét"
                           onClick={e => handleComment(e)}>Bình luận</button>
                       </div>
-                    </form> 
-                   
-
-                  </li> : <div className="unlogin-container">
+                    </form>    
+                  </li> : <></> : <div className="unlogin-container">
                       <span>Bạn chưa đăng nhập, vui lòng đăng nhập để bình luận</span>
                       <div> 
                         <button type="button" class="btn btn-primary text-12 ml-5">Đăng Nhập</button>

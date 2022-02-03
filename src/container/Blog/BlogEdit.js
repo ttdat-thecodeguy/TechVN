@@ -89,13 +89,13 @@ const BlogEdit = (props) => {
           <input
             type="text"
             placeholder="Tiêu Đề bài viết..."
-            class="blog-input"
+            className="blog-input"
             required="required"
             value={title}
             onChange={e => setTitle(e.target.value)}
           />
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <label for="">Mô tả ngắn</label>
           <textarea
             class="form-control"

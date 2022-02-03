@@ -37,7 +37,7 @@ export const loginSocialService = req => {
 
 export const registerService = req => {
     const postData = {
-        fullname: req.fullname,
+        username: req.username,
         email: req.email,
         password: req.password,
         image: "image_default.jpg",

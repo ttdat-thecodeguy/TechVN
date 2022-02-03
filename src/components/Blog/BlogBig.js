@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 export const BlogBig = (props) => {
   const { post } = props;
   return (
-    <div class="post-entry-1">
+    <div className="post-entry-1">
       <Link to={"/blog/" + post.link}>
         <img
           src={Config.IMG_URL_BLOG + post.image.name}
           alt="img"
-          class="img-fluid" />
+          className="img-fluid" />
       </Link>
       <h2>
         <Link to={"/blog/" + post.link}>{post.title}</Link>
@@ -24,11 +24,11 @@ export const BlogBig = (props) => {
           <a href="/">{post.account.name}</a> Trong{" "}
           <a href="/">{post.types[0].name}</a>
         </span>
-        <span class="date-read">
+        <span className="date-read">
           {formatPublishDate(post.publishDate)}
-          <span class="mx-1">&bull;</span>
+          <span className="mx-1">&bull;</span>
         </span>
-        <span class="icon-star2"></span>
+        <span className="icon-star2"></span>
       </div>
     </div>
   );

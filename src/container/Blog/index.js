@@ -10,27 +10,21 @@ import { getBlogByNameRequest } from "../../store/action/blogAction";
 
 import { isAuth } from "../../store/selector";
 import { loadAction } from "../../store/action/loadingAction";
-import * as Config from "../../constraints/Config"
-
-import SockJS from "sockjs-client";
-import Stomp from "stompjs";
 
 const TrendingLazy = lazy(() =>
   import("../../components/HomePage/TrendingList")
 );
 
 const Blog = (props) => {
-  
   const dispatch = useDispatch();
   let { name } = useParams();
 
-
-  const [auth] = useSelector((state) => [
-    isAuth(state)
+  const [auth] = useSelector((state) => [isAuth(state)]);
+  const [blog, same_cate] = useSelector((state) => [
+    state.blogReducers.blog,
+    state.blogReducers.same_cate
   ]);
-  const [blog, same_cate] = useSelector((state) => [state.blogReducers.blog,
-    state.blogReducers.same_cate]);
-  
+
   useEffect(() => {
     let l_name = name.split("-");
     if (l_name.length <= 1 || isNaN(parseInt(l_name[0])))
@@ -38,18 +32,17 @@ const Blog = (props) => {
     dispatch(loadAction(true));
     dispatch(getBlogByNameRequest(parseInt(l_name[0]), props.history));
   }, [dispatch, name, props.history]);
-
-
-  
-
-
-
   return (
     <div className="blog-details-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 single-content">
-            <BlogDetails history={props.history} auth={auth} blog={blog} name={name} />
+            <BlogDetails
+              history={props.history}
+              auth={auth}
+              blog={blog}
+              name={name}
+            />
           </div>
 
           <div class="col-lg-3">
@@ -57,24 +50,26 @@ const Blog = (props) => {
               <TrendingLazy />
             </Suspense>
 
-          { blog !== undefined && blog.types !== undefined && <>
-            <div class="section-title">
-              <h2>{blog.types[0].name}</h2>
-            </div>
+            {blog !== undefined && blog.types !== undefined && (
+              <>
+                <div class="section-title">
+                  <h2>{blog.types[0].name}</h2>
+                </div>
 
-            <div class="trend-entry d-flex">
-              <ul>
-                { same_cate.length !== 0 && same_cate.map(sb => 
-                <li>
-                  <Link to={`/blog/${sb.path}`}>
-                  <h2>
-                    {sb.title}
-                  </h2>
-                  </Link>                  
-                </li>) }               
-              </ul>
-            </div>           
-          </> }
+                <div class="trend-entry d-flex">
+                  <ul>
+                    {same_cate.length !== 0 &&
+                      same_cate.map((sb) => (
+                        <li>
+                          <Link to={`/blog/${sb.path}`}>
+                            <h2>{sb.title}</h2>
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              </>
+            )}
 
             <div
               class="fb-page"
@@ -85,7 +80,8 @@ const Blog = (props) => {
               data-small-header="false"
               data-adapt-container-width="true"
               data-hide-cover="false"
-              data-show-facepile="true">
+              data-show-facepile="true"
+            >
               <blockquote
                 cite="https://www.facebook.com/facebook"
                 class="fb-xfbml-parse-ignore"

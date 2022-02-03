@@ -67,7 +67,7 @@ const Register = () => {
     if (err) return;
     const req = {
       email,
-      fullname: name,
+      username: name,
       password,
     };
     dispatch({
