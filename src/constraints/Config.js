@@ -1,4 +1,4 @@
-﻿const IMG_URL = "http://res.cloudinary.com/hcmusvnu/image/upload/v1629446289/cloudinary/"
+const IMG_URL = "http://res.cloudinary.com/hcmusvnu/image/upload/v1629446289/cloudinary/"
 export const IMG_URL_ACCOUNT = `${IMG_URL}/account/`
 export const IMG_URL_BLOG = `${IMG_URL}/blog/`
 
@@ -64,8 +64,8 @@ export const editorConfig = {
     responsive: false,
   };
 
-  export const SUCCESS = { id: 1, name : "Thành Công" };
-  export const DANGER = { id: 2, name : "Cảnh Báo" };
-  export const PENDING = { id: 3, name : "Đang Chờ" };
+  export const SUCCESS = { id: 1, name : "Th�nh C�ng" };
+  export const DANGER = { id: 2, name : "C?nh B�o" };
+  export const PENDING = { id: 3, name : "?ang Ch?" };
   export const MAIN_URL = `https://techblog-vn.herokuapp.com`
   export const WS_MESSAGE = `${MAIN_URL}/ws-message`;
