@@ -2288,6 +2288,16 @@ b, strong {
 .bg-unreaded {
   background-color: rgb(217, 230, 253);
 }
+.btnChangeLang{
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: #666;
+}
+.btnChangeLang:hover{
+  color: #e96656;
+  transition: 5ms all;
+}
 
 @media screen and (max-width: 450px) {
  

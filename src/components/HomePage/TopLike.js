@@ -3,6 +3,7 @@ import { BlogBig } from "../Blog/BlogBig";
 import { BlogChild } from "../Blog/BlogChild";
 import { useDispatch, useSelector } from 'react-redux'
 import { getTopLoveRequest } from '../../store/action/blogAction' 
+import { withTranslation } from "react-i18next";
 
 const TopLike = props => {
 
@@ -11,6 +12,7 @@ const TopLike = props => {
     state.blogReducers.toplike
   ])
 
+  const { t } = props;
   useEffect(() => {
      dispatch(getTopLoveRequest(0))
   },[dispatch])
@@ -24,7 +26,9 @@ const TopLike = props => {
       <div class="row">
         <div class="col-12">
           <div class="section-title">
-            <h2>Xem Nhiều Nhất</h2>
+            <h2>
+            { t('homepage.watched', { framework: "react-i18next" }) }
+            </h2>
           </div>
         </div>
       </div>
@@ -39,7 +43,4 @@ const TopLike = props => {
     </>
   );
 };
-
-
-
-export default TopLike
+export default withTranslation('common')(TopLike)

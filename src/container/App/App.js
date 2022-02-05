@@ -12,6 +12,7 @@ import { InterceptorError } from "../../service/axiosInstance";
 import "./App.css";
 
 import NetworkError from "../Error/NetworkError";
+import { withTranslation } from "react-i18next";
 
 const App = (props) => {
   InterceptorError(props.history);
@@ -26,14 +27,13 @@ const App = (props) => {
             path={route.path}
             exact={route.exact}
             component={route.main}
-            auth={auth}
           ></Route>
         );
       });
     }
     return <Switch>{result}</Switch>;
   };
-   
+
   const [isLoading, auth] = useSelector((state) => [
     state.loading,
     isAuth(state)
@@ -43,15 +43,31 @@ const App = (props) => {
   return (
     <div class="site-wrap">
       {isLoading && <Loader />}
-      { props.history.location.pathname === "/network-error" ? <NetworkError></NetworkError> : rgxAdmin.test(props.history.location.pathname) ? (
-        <>
-          <AdminHeader history={props.history} auth={auth} isLogin={auth ? true : false} />
-            <div className="mainAdmin" id="mainAdmin">{showContent(AdminRoutes, auth)}</div>
-        </>
+      {props.history.location.pathname === "/network-error" ? (
+        <NetworkError></NetworkError>
+      ) : rgxAdmin.test(props.history.location.pathname) ? (
+        auth !== null && auth !== undefined && auth.user.role === 2 ? (
+          <>
+            <AdminHeader
+              history={props.history}
+              auth={auth}
+              isLogin={auth ? true : false}
+            />
+            <div className="mainAdmin" id="mainAdmin">
+              {showContent(AdminRoutes, auth)}
+            </div>
+          </>
+        ) : (
+          props.history.push("/403")
+        )
       ) : (
         <>
-          <Header history={props.history} auth={auth} isLogin={auth ? true : false} />
-            {showContent(routes, auth)}
+          <Header
+            history={props.history}
+            auth={auth}
+            isLogin={auth ? true : false}
+          />
+          {showContent(routes, auth)}
           <Footer />
         </>
       )}
@@ -59,4 +75,4 @@ const App = (props) => {
   );
 };
 
-export default withRouter(App);
+export default withRouter(withTranslation("common")(App));

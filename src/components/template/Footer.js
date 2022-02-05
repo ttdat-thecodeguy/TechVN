@@ -1,6 +1,8 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
+import ReactHtmlParser from 'react-html-parser';
 
-const Footer = () => {
+const Footer = ({ t }) => {
     return (
         <>
                     <div class="footer" style={{ borderTop:"1px solid #D0D0D0", backgroundColor: "#Fff" }}>
@@ -9,9 +11,9 @@ const Footer = () => {
                             <div class="col-12">
                                 <div class="copyright">
                                     <p>
-                                    
-                                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" rel="noreferrer" >Colorlib</a>
-                                        </p>
+                                        {ReactHtmlParser( t('footer.end', { framework: "react-i18next" })  )}
+
+                                    </p>
                                 </div>
                             </div>
                             </div>
@@ -21,4 +23,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default withTranslation('common')(Footer);

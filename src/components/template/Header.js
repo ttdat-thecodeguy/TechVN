@@ -1,28 +1,30 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import {  withTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
 
 const Header = props => {
-  const { history, auth, isLogin } = props;
+  const { history, auth, isLogin, t, i18n } = props;
   return (
     <div class="header-top">
       <div class="container pt-3 pb-3">
         <div class="row align-items-center">
-          <div class="col-12 col-lg-3 d-flex">
-            <a href="index.html" class="site-logo">
+          <div class="col-3 col-lg-3 d-flex">
+            <Link to="/" class="site-logo">
               <img src={process.env.PUBLIC_URL + "/logo.png"} alt="logo" />
-            </a>
+            </Link>
 
            
           </div>
-          <div class="col-12 col-lg-7 d-flex">
+          <div class="col-6 col-lg-6 d-flex">
             <form action="#" class="search-form d-inline-block">
               <div class="d-flex">
                 <div class="dropdown">
                   <input
                     type="text"
                     class="form-control-app"
-                    placeholder="Tìm Kiếm..."
+                    placeholder={ `${t('search', { framework: "react-i18next" })}...` }
                     onKeyPress={e => {
                       if (e.key === "Enter") {
                         history.push(`/danh-sach-blog/${e.target.value}`);
@@ -36,7 +38,11 @@ const Header = props => {
               </div>
             </form>
           </div>
-          <div class="col-6 d-block d-lg-none text-right" />
+          <div class="col-3 d-block text-right">
+              <button className="btnChangeLang" onClick={e => i18n.changeLanguage('en')}>EN</button>
+              |
+              <button className="btnChangeLang" onClick={e => i18n.changeLanguage('vn')}>VN</button>
+          </div>
         </div>
       </div>
 
@@ -45,4 +51,4 @@ const Header = props => {
   );
 };
 
-export default Header;
+export default withTranslation('common')(Header);

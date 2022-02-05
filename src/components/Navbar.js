@@ -10,18 +10,23 @@ import {
 
 import { getTypeRequest } from "../store/action/typeAction";
 
-import { IMG_URL_ACCOUNT, WS_MESSAGE } from "../constraints/Config";
+import * as Config from "../constraints/Config";
 import { useEffect } from "react";
-import * as Types from "../constraints/ActionTypes";
 
 import ShowMoreText from "react-show-more-text";
 import { isEmpty } from "lodash";
 
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
+import { withTranslation } from "react-i18next";
+import { useState } from "react";
 
 const Navbar = (props) => {
-  const { history, auth, isLogin } = props;
+  const { history, auth, isLogin, t, i18n } = props;
+  
+  const [lang, setLang] = useState(i18n.language)
+
+  i18n.changeLanguage().then(t => setLang(i18n.language));
 
   const dispatch = useDispatch();
 
@@ -31,26 +36,24 @@ const Navbar = (props) => {
     state.userReducers.notification
   ]);
 
-  useEffect(() => {
-    dispatch({
-      type: Types.LOADING_TOGGLE,
-      payload: true
-    });
-    dispatch(getTypeRequest());
 
+  useEffect(() => {
+    if(types === undefined || types == null || types.length === 0) {
+      dispatch(getTypeRequest());
+    }
     if (isLogin) {
       dispatch(getAllNotificationRequest(0, 5));
-      var sock = new SockJS(WS_MESSAGE);
+      var sock = new SockJS(Config.WS_MESSAGE);
       let stompClient = Stomp.over(sock);
       stompClient.connect(
         { username: auth.user.content },
-        function (frame) {
-          
+        function ( _ ) {      
           dispatch(addNotificationRequest(stompClient))
         },
         (err) => console.log(err)
       );
     }
+ 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, isLogin]);
 
@@ -64,22 +67,29 @@ const Navbar = (props) => {
       <div class="col-3">
         <h5>
           {level === 1
-            ? "Phần Mềm"
+            ? t('header.lnavbar.type.level.l1', { framework: "react-i18next" })
             : level === 2
-            ? "Phần Cứng"
-            : "Thế Giới Công Nghệ"}
+            ? t('header.lnavbar.type.level.l2', { framework: "react-i18next" })
+            : t('header.lnavbar.type.level.l3', { framework: "react-i18next" })}
         </h5>
         <ul>
           {types.map((item, idx) => {
             if (item.level === level)
-              return (
-                <li>
-                  <a href={`/danh-muc/${item.id}/${item.path}`}>{item.name}</a>
-                </li>
-              );
+              if(lang === "vn")
+                return (
+                  <li>
+                    <a href={`/danh-muc/${item.id}/${item.path}`}>{item.name}</a>
+                  </li>
+                );
+              else
+                  return (
+                    <li>
+                      <a href={`/danh-muc/${item.id}/${item.path}`}>{item.name_en}</a>
+                    </li>
+                  )
             else return <></>;
           })}
-          <Link to={"/cate/see-more"}>Xem Thêm</Link>
+          <Link to={"/cate/see-more"}>{t('header.lnavbar.type.watch_more', { framework: "react-i18next" })}</Link>
         </ul>
       </div>
     );
@@ -106,7 +116,9 @@ const Navbar = (props) => {
               <ul class="navbar-nav mr-auto">
                 <li class="active nav-item">
                   <Link to="/" class="nav-link text-left">
-                    <i class="fa fa-home"></i>Trang Chủ
+                    <i class="fa fa-home"></i>
+                    { t('header.lnavbar.homepage', { framework: "react-i18next" }) }
+                    
                   </Link>
                 </li>
 
@@ -116,7 +128,7 @@ const Navbar = (props) => {
                       class="nav-link text-left cateBtn"
                       onClick={(e) => history.push("/danh-sach-blog")}
                     >
-                      Danh Mục
+                      { t('header.lnavbar.type.title', { framework: "react-i18next" }) }
                       <i class="fa fa-caret-down"></i>
                     </li>
                     <div class="cate-content">
@@ -140,12 +152,12 @@ const Navbar = (props) => {
                 </li>
                 <li className="nav-item">
                   <Link to="/contact" class="nav-link text-left">
-                    Liên Hệ
+                  { t('header.lnavbar.contact', { framework: "react-i18next" }) }
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/about" class="nav-link text-left">
-                    Về Tôi
+                  { t('header.lnavbar.aboutme', { framework: "react-i18next" }) }
                   </Link>
                 </li>
               </ul>
@@ -154,12 +166,13 @@ const Navbar = (props) => {
                   <>
                     <li>
                       <Link to="/login" class="nav-link text-left">
-                        Đăng Nhập
+                      { t('header.snavbar.login', { framework: "react-i18next" }) }
                       </Link>
                     </li>
                     <li>
                       <Link to="/register" class="nav-link text-left">
-                        <i class="fa fa-user-plus"></i>Đăng Kí
+                        <i class="fa fa-user-plus"></i>
+                        { t('header.snavbar.signup', { framework: "react-i18next" }) }
                       </Link>
                     </li>
                   </>
@@ -209,7 +222,7 @@ const Navbar = (props) => {
                                     <img
                                       className="img-fluid rounded-circle"
                                       src={
-                                        IMG_URL_ACCOUNT + "image_default.jpg"
+                                        Config.IMG_URL_ACCOUNT + "image_default.jpg"
                                       }
                                       alt="user-sample"
                                     />
@@ -257,7 +270,7 @@ const Navbar = (props) => {
                             src={
                               auth.isSocialLogin === null ||
                               auth.isSocialLogin === 0
-                                ? IMG_URL_ACCOUNT + auth.user.image
+                                ? Config.IMG_URL_ACCOUNT + auth.user.image
                                 : auth.user.image
                             }
                             alt="accountIMG"
@@ -270,20 +283,24 @@ const Navbar = (props) => {
                           aria-labelledby="dropdownMenuLink"
                         >
                           <Link class="dropdown-item" to="/user">
-                            <i class="fa fa-user bg-white"></i>T.T Bản Thân
+                            <i class="fa fa-user bg-white"></i>
+                            { t('header.snavbar.me.info', { framework: "react-i18next" }) }
                           </Link>
                           <Link class="dropdown-item " to="/user/blog/">
-                            <i class="fa fa-tasks"></i>Quản Lí Bài viết
+                            <i class="fa fa-tasks"></i>
+                            { t('header.snavbar.me.manage', { framework: "react-i18next" }) }
                           </Link>
                           <Link class="dropdown-item" to="/user/blog/add">
-                            <i class="fa fa-plus-circle"></i>Viết Blog
+                            <i class="fa fa-plus-circle"></i>
+                            { t('header.snavbar.me.create_blog', { framework: "react-i18next" }) }
                           </Link>
                           <Link class="dropdown-item" to="/user/help">
-                            <i class="fa fa-info-circle"></i>Trợ Giúp
+                            <i class="fa fa-info-circle"></i>
+                            { t('header.snavbar.me.help', { framework: "react-i18next" }) }
                           </Link>
                           <Link class="dropdown-item" to="/notification/error">
-                            <i class="fa fa-exclamation-triangle"></i>Phản Hồi
-                            Lỗi
+                            <i class="fa fa-exclamation-triangle"></i>
+                            { t('header.snavbar.me.response', { framework: "react-i18next" }) }
                           </Link>
                           <div class="dropdown-divider"></div>
                           <Link
@@ -295,7 +312,7 @@ const Navbar = (props) => {
                               class="fa fa-sign-out"
                               aria-hidden="true"
                             ></i>{" "}
-                            Đăng Xuất
+                            { t('header.snavbar.me.signout', { framework: "react-i18next" }) }
                           </Link>
                         </div>
                       </div>
@@ -311,4 +328,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default withTranslation('common')(Navbar);

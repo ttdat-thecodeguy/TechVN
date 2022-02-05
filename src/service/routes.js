@@ -1,4 +1,8 @@
 import HomePage from "../container/HomePage";
+import Contact from "../container/Contact";
+import AboutMe from "../container/AboutMe";
+
+
 import Login from "../container/Auth/Login";
 import Register from "../container/Auth/Register";
 import Blog from "../container/Blog";
@@ -7,8 +11,8 @@ import UserBlog from "../container/User/UserBlog";
 import BlogEdit from "../container/Blog/BlogEdit";
 import CateBlog from "../container/Cate";
 
+
 import Error from "../container/Error";
-import * as ErrorTypes from "../constraints/ErrorType"
 
 import AdminDashboard from "../container/Admin";
 import UserDashboard from "../container/Admin/User";
@@ -74,30 +78,39 @@ export const routes = [
     main: ({ match, history }) => <BlogEdit match={match} />
   },
   {
+    path: "/contact",
+    exact: false,
+    main: ({ match, history }) => <Contact match={match} />
+  },
+  {
+    path: "/about",
+    exact: false,
+    main: ({ match, history }) => <AboutMe match={match} />
+  },
+  {
     path: "/404",
     exact: false,
-    main: () => <Error error={ErrorTypes.NOT_FOUND} />,
+    main: () => <Error code={404} />,
   },
   {
     path: "/500",
     exact: false,
-    main: () => <Error error={ErrorTypes.SERVER_FAILURE} />,
+    main: () => <Error code={500} />,
   },
   {
     path: "/401",
     exact: false,
-    main: () => <Error error={ErrorTypes.UNAUTHORIZED} />,
+    main: () => <Error code={401} />,
   },
   {
     path: "/403",
     exact: false,
-    main: () => <Error error={ErrorTypes.FORBIDDEN} />,
+    main: () => <Error code={403} />,
   },
-
   {
     path: "",
     exact: false,
-    main: () => <Error error={ErrorTypes.NOT_FOUND} />,
+    main: () => <Error code={404} />,
   },
 ];
 

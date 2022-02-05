@@ -32,6 +32,10 @@ const Blog = (props) => {
     dispatch(loadAction(true));
     dispatch(getBlogByNameRequest(parseInt(l_name[0]), props.history));
   }, [dispatch, name, props.history]);
+
+
+  console.log(props)
+
   return (
     <div className="blog-details-section">
       <div class="container">

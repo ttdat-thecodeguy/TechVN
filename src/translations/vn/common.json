@@ -1,0 +1,80 @@
+{
+    "search": "Tìm Kiếm",
+    "header": {
+        "lnavbar":{
+            "homepage": "Trang Chủ",
+            "type": {
+                "title": "Danh Mục",
+                "level": {
+                    "l1": "Phần Mềm",
+                    "l2": "Phần Cứng",
+                    "l3": "Thế Giới Công Nghệ"
+                },
+                "watch_more": "Xem Thêm"
+            },
+            "contact": "Liên Hệ",
+            "aboutme": "Về Tôi"
+        },
+        "snavbar":{
+            "login":"Đăng Nhập",
+            "signup": "Đăng Kí",
+            "me": {
+                "info": "T.T Cá Nhân",
+                "manage": "Quản Lí Bài Viết",
+                "create_blog":"Viết Blog",
+                "help":"Trợ Giúp",
+                "response": "Phản Hồi Lỗi",
+                "signout": "Đăng Xuất"
+            }
+        }
+    },
+    "homepage":{
+        "watched":"Xem Nhiều Nhất",
+        "trending": {
+            "title": "Yêu Thích Nhất",
+            "watch_more": "Xem Toàn Bộ Bảng Xếp Hạng"
+        }
+    },
+    "user": {
+        "user_detail":{
+            "title":{
+                "s1": "Trang Người dùng",
+                "s2": "Thông tin cá nhân"
+            },
+            "main":{
+                "title": "Thông tin cá nhân",
+                "desc": "Mô tả ngắn",
+                "field": "Lĩnh Vực"
+            }
+        }
+    },
+    "categories":{
+
+    },
+    "footer":{
+        "pre":{},
+        "end": "Bản Quyền của Template này được tạo một phần bởi <i class=\"icon-heart text-danger\"></i> Colorlib"
+    },
+    "error":{
+        "404":{
+            "code": 404,
+            "title": "Không tìm thấy trang",
+            "content": "chúng tôi không thể tìm thấy trang của bạn, có thể nó đã bị xóa hoặc sai địa chỉ, đón xem bài viết khác tại trang chủ"
+        },
+        "401":{
+            "code": 401,
+            "title": "Có Lỗi Xảy Ra",
+            "content": "Bạn không thể xem trang này khi chưa đăng nhập hãy đăng nhập"
+        },
+        "403":{
+            "code": 403,
+            "title": "Hạn chế quyền truy cập",
+            "content": "trang này bị hạn chế truy cập, đón xem bài viết khác tại trang chủ"
+        },
+        "500":{
+            "code": 500,
+            "title": "Có Lỗi Xảy Ra",
+            "content": "chúng tôi đang tìm cách khắc phục, đón xem bài viết khác tại trang chủ"
+        }
+    }
+}

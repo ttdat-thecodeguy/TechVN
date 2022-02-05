@@ -6,21 +6,21 @@ import { getCategoriesBlogRequest, getBlogBySearchNameRequest } from "../../stor
 import { loadAction } from "../../store/action/loadingAction";
 
 import { Link, useParams } from "react-router-dom";
-import {isArray} from "lodash"
+import {isArray, isEmpty} from "lodash"
 const CateBlog = (props) => {
   const dispatch = useDispatch();
 
   //// init state
 
   let { id, searchName } = useParams();
-  let [page] = useState(0);
+  let [page, setPage] = useState(0);
   const [types] = useSelector((state) => [state.typeReducers]);
   const [cate] = useSelector((state) => [state.blogReducers.cate]);
 
   //sort
 
-  const [isDateAscSort, setDateAscSort] = useState(true);
-  const [isTitleAscSort, setTitleAscSort] = useState(true);
+  const [isDateAscSort, setDateAscSort] = useState("");
+  const [isTitleAscSort, setTitleAscSort] = useState("");
 
   /// search
 
@@ -29,23 +29,25 @@ const CateBlog = (props) => {
   const [errorSearchContent, setErrorSearchContent] = useState(null)
   const [isSearch, setIsSearch] = useState(false)
 
-
   useEffect(() => {
+    let isSearchAll = false;
+    let _search = "";
     if(searchName !== null && searchName !== undefined){
-          setSearchContent(searchName)
-          setIsSearch(true)
+      isSearchAll = true;
     }
 
+    _search = isSearchAll ? searchName : searchContent;
 
     if (id !== null && id !== undefined) {
-      if(isSearch === true){
-        dispatch(getBlogBySearchNameRequest(page, 8, isDateAscSort, isTitleAscSort, id, searchContent))
+      if(isSearch === true || isSearchAll === true){      
+        dispatch(getBlogBySearchNameRequest(page, 8, isDateAscSort, isTitleAscSort, id, _search))
       }else{
         dispatch(getCategoriesBlogRequest(page, 8, isDateAscSort, isTitleAscSort, id));
       }
+
     } else{
-      if(isSearch === true){
-        dispatch(getBlogBySearchNameRequest(page, 8, isDateAscSort, isTitleAscSort, 0, searchContent))
+      if(isSearch === true || isSearchAll === true){
+        dispatch(getBlogBySearchNameRequest(page, 8, isDateAscSort, isTitleAscSort, 0, _search))
       }else{
         dispatch(getCategoriesBlogRequest(page, 8, isDateAscSort, isTitleAscSort, 0))
       }
@@ -103,7 +105,7 @@ const CateBlog = (props) => {
     }
     else{
       dispatch(loadAction(true))
-      dispatch(getBlogBySearchNameRequest(page, 8, isDateAscSort, isTitleAscSort, id, searchContent))
+      
       setErrorSearchContent(null)
       setIsSearch(true)
       setSearchContent(search)
@@ -121,19 +123,23 @@ const CateBlog = (props) => {
   }
 
   //// Sort
-
-  
-
   const handleDateSort = (e) => {
-    e.preventDefault();
+    e.preventDefault();    
     dispatch(loadAction(true))
-    setDateAscSort(!isDateAscSort);
+    if(isDateAscSort === "") {
+      setDateAscSort(true);
+    }
+    else{
+      setDateAscSort(!isDateAscSort);
+    } 
   };
 
   const handleTitleSort = (e) => {
     e.preventDefault();
+
     dispatch(loadAction(true))
-    setTitleAscSort(!isTitleAscSort);
+    if(isTitleAscSort === "") setTitleAscSort(true);
+    else setTitleAscSort(!isTitleAscSort);
   };
 
   ///// Paging
@@ -141,12 +147,12 @@ const CateBlog = (props) => {
   const mapPage = (totalPage) => {
     var indents = [];
 
-    for (let i = 0; i < totalPage; i++) {
+    for (let i = 1; i <= totalPage; i++) {
       let active = "";
-      if (i === page) active = "active";
+      if (i === (page+1)) active = "active";
       indents.push(
         <li className={`page-item ${active}`}>
-          <Link className="page-link">{++i}</Link>
+          <Link onClick={e => setPage(i - 1)} className="page-link">{i}</Link>
         </li>
       );
     }
@@ -281,7 +287,6 @@ const CateBlog = (props) => {
             </div>}
             { id !== undefined && isSearch === false &&  <h5 style={{ textTransform: "uppercase" }}>{cate.type.name}</h5> }
             { id !== undefined && isSearch === true &&  <div>
-              {console.log(cate)}
               <h5 style={{ textTransform: "uppercase" }}>Tìm Kiếm Bài Viết: {searchContent}</h5>
               { isArray(cate.type) === false ? <></> : <span>Trong <a href={`/danh-muc/${cate.type[0].id}/${cate.type[0].path}`}> {cate.type[0].name} </a></span> }  
             </div> }
@@ -291,7 +296,7 @@ const CateBlog = (props) => {
           { id !== undefined && isSearch === false && <div class="card">
             <div class="card-body">{cate.type.description}</div>
           </div>}
-          {cate.list.length > 0 ? (
+          {cate !== undefined && cate.list !== undefined &&  cate.list.length > 0 ? (
             <>
               <div className="row">
                 {cate.list.map((item, idx) => {
@@ -305,25 +310,25 @@ const CateBlog = (props) => {
 
               <nav
                 aria-label="Page navigation"
-                className="d-flex justify-content-center"
-              >
+                className="d-flex justify-content-center">
                 <ul className="pagination">
-                  {page === 1 ? (
+                  {page === 0 ? (
                     ""
                   ) : (
-                    <li className="page-item disabled">
-                      <Link className="page-link" aria-label="Previous">
+                    <li className="page-item">
+                      <Link className="page-link" onClick={e => setPage(page - 1)} aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span className="sr-only">Previous</span>
                       </Link>
                     </li>
                   )}
                   {mapPage(cate.size)}
-                  {page === cate.size || cate.size === 0 ? (
+                  
+                  {(page + 1)  === cate.size || cate.size === 0 ? (
                     ""
                   ) : (
                     <li className="page-item">
-                      <Link className="page-link" href="#" aria-label="Next">
+                      <Link className="page-link" onClick={e => setPage(page + 1)} aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span className="sr-only">Next</span>
                       </Link>

@@ -78,7 +78,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (hasError) setIsOpenModal(true);
+    if (!hasError) setIsOpenModal(true);
   }, [hasError]);
 
   return (

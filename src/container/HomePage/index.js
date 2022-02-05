@@ -15,9 +15,7 @@ const TrendingLazy = lazy(() =>
 
 const HomePage = () => {
   const [ loved ] = useSelector(state => [ mapLovedBlog(state) ])
-  // const [  auth  ] = useSelector(state => [
-  //   isAuth(state)
-  // ])
+  
   return (
     <>
       <div class="container">

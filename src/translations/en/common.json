@@ -1,0 +1,80 @@
+{
+    "search": "Search",
+    "header": {
+        "lnavbar":{
+            "homepage": "Home",
+            "type": {
+                "title": "Categories",
+                "level": {
+                    "l1": "Software",
+                    "l2": "Hardware",
+                    "l3": "Tech World"
+                },
+                "watch_more": "watch more"
+            },
+            "contact": "Contact",
+            "aboutme": "About Me"
+        },
+        "snavbar":{
+            "login":"Login",
+            "signup": "Sign Up",
+            "me": {
+                "info": "My Info",
+                "manage": "My Blogs",
+                "create_blog":"Create New Blog",
+                "help":"Help",
+                "response": "Response Error",
+                "signout": "Sign Out"
+            }
+        }
+    },
+    "homepage":{
+        "watched":"Most Watch",
+        "trending": {
+            "title": "Top Of Favorite",
+            "watch_more": "Watch more"
+        }
+    },
+    "user": {
+        "user_detail":{
+            "title":{
+                "s1": "User page",
+                "s2": "My Information"
+            },
+            "main":{
+                "title": "My Information",
+                "desc": "About Me",
+                "field": "Field"
+            }
+        }
+    },
+    "categories":{
+        
+    },
+    "footer":{
+        "pre":{},
+        "end": "Copyright © All rights reserved | This template is made with <i class=\"icon-heart text-danger\"></i> by Colorlib"
+    },
+    "error":{
+        "404":{
+            "code": 404,
+            "title": "Not found",
+            "content": "we cant find anything about this page, my be it was deleted or change to another location, please turn back and watch another blog in homepage"
+        },
+        "401":{
+            "code": 401,
+            "title": "Something wrong",
+            "content": "You cant not see this page if you dont login"
+        },
+        "403":{
+            "code": 403,
+            "title": "Forrbiden",
+            "content": "This page in restricted, please comeback to homepage"
+        },
+        "500":{
+            "code": 500,
+            "title": "Something broken",
+            "content": "we are try my best to fix this bug, Keep calm and go to homepage, :))"
+        }
+    }
+}
