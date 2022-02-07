@@ -14,7 +14,7 @@ const TopLike = props => {
 
   const { t } = props;
   useEffect(() => {
-     dispatch(getTopLoveRequest(0))
+     dispatch(getTopLoveRequest())
   },[dispatch])
 
   const showPostChild = posts => {

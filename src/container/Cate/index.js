@@ -6,7 +6,7 @@ import { getCategoriesBlogRequest, getBlogBySearchNameRequest } from "../../stor
 import { loadAction } from "../../store/action/loadingAction";
 
 import { Link, useParams } from "react-router-dom";
-import {isArray, isEmpty} from "lodash"
+import {isArray} from "lodash"
 const CateBlog = (props) => {
   const dispatch = useDispatch();
 

@@ -12,9 +12,9 @@ import {
 } from "../../service/blogService";
 import { loadAction } from "./loadingAction";
 
-export const getTopLoveRequest = (start) => {
+export const getTopLoveRequest = () => {
   return (dispatch) => {
-    getTopLike(0).then((res) => {
+    getTopLike().then((res) => {
       dispatch({
         type: Types.GET_TOP_LOVE,
         payload: res.data || []

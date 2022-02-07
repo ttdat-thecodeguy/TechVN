@@ -5,7 +5,6 @@ import TrendingLoader from "../Loader/HomePage/TrendingListLoader";
 import SliderLoader from "../Loader/HomePage/SliderLoader";
 import { useSelector } from "react-redux";
 import { mapLovedBlog } from "../../store/selector"
-// import { isAuth } from '../../store/selector/authSelector'
 
 const TopLikeLazy = lazy(() => import("../../components/HomePage/TopLike"));
 const SliderLazy = lazy(() => import("../../components/HomePage/SliderList"));

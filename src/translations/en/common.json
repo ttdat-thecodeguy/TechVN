@@ -48,6 +48,24 @@
             }
         }
     },
+    "login":{
+        "title": "Login",
+        "username_holder": "Your Username or Your Email",
+        "password_holder": "Your Password",
+        "remember_me":"Remember me",
+        "login_btn": "Login Now",
+        "social": "Or Login with",
+        "to_sign_up": "Create New Account"
+    },
+    "signup":{
+        "title": "Register",
+        "username_holder": "Your Username",
+        "password_holder" : "Your Password",
+        "email_holder": "Your Email",
+        "repeat_password": "Repeat Your Password",
+        "register_btn": "Register Now",
+        "to_login": "I am already member"
+    },
     "categories":{
         
     },

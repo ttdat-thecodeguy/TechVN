@@ -15,6 +15,7 @@
             "contact": "Liên Hệ",
             "aboutme": "Về Tôi"
         },
+
         "snavbar":{
             "login":"Đăng Nhập",
             "signup": "Đăng Kí",
@@ -47,6 +48,24 @@
                 "field": "Lĩnh Vực"
             }
         }
+    },
+    "login":{
+        "title": "Đăng Nhập",
+        "username_holder": "Tên đăng nhập hoặc mặt khẩu của bạn",
+        "password_holder": "Mật Khẩu của bạn",
+        "remember_me":"Nhớ Tôi",
+        "login_btn": "Đăng Nhập Ngay",
+        "social": "Hoặc đăng nhập bằng: ",
+        "to_sign_up": "Tạo Mới tài khoản"
+    },
+    "signup":{
+        "title": "Đăng Kí",
+        "username_holder": "Nhập Tên Đăng Nhập",
+        "password_holder" : "Nhập Mật Khẩu",
+        "email_holder": "Nhập Email",
+        "repeat_password": "Xác Nhận mật khẩu",
+        "register_btn": "Đăng Kí Ngay",
+        "to_login": "Tôi đã có tài khoản"
     },
     "categories":{
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {withRouter} from 'react-router-dom'
 import "./style.css";
+
 import "./fonts/material-icon/css/material-design-iconic-font.css";
 import "./fonts/material-icon/css/material-design-iconic-font.min.css";
 import { Link } from "react-router-dom";
@@ -8,10 +9,11 @@ import { useDispatch } from 'react-redux'
 import * as NotiTypes from "../../constraints/NotificationTypes";
 import * as Types from "../../constraints/ActionTypes";
 
+import { withTranslation } from "react-i18next";
 import { loginActionRequest , loginSocialActionRequest} from '../../store/action/userAction'
 import { GoogleLogin } from 'react-google-login'
 
-const Login = props => {
+const Login = ({ t, history  }) => {
   const [loginContent, setloginContent] = useState("");
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState(false)
@@ -44,7 +46,7 @@ const Login = props => {
       type: Types.LOADING_TOGGLE,
       payload: true,
     })
-    dispatch(loginActionRequest(req, checked, props.history))
+    dispatch(loginActionRequest(req, checked, history))
   };
 
   const handleLoginSocialSuccess = res => {
@@ -60,7 +62,7 @@ const Login = props => {
       type: Types.LOADING_TOGGLE,
       payload: true,
     })
-    dispatch(loginSocialActionRequest(req, props.history))
+    dispatch(loginSocialActionRequest(req, history))
   }
   
   const handleLoginSocialFailure = res => {
@@ -79,12 +81,12 @@ const Login = props => {
               />
             </figure>
             <Link to="/register" class="signup-image-link">
-              Tạo tài khoản mới
+              { t('login.to_sign_up', { framework: "react-i18next" }) }
             </Link>
           </div>
 
           <div class="signin-form">
-            <h2 class="form-title">Đăng Nhập</h2>
+            <h2 class="form-title">{ t('login.title', { framework: "react-i18next" }) }</h2>
             <form method="POST" action="" class="register-form" id="login-form">
               <div class="form-group">
                 <label for="your_name">
@@ -96,7 +98,7 @@ const Login = props => {
                   id="your_name"
                   value={loginContent}
                   onChange={(e) => setloginContent(e.target.value)}
-                  placeholder="Tên đăng nhập hoặc email của bạn"
+                  placeholder={ t('login.username_holder', { framework: "react-i18next" }) }
                 />
                 {errors.loginContent && (
                   <p class="error-title">{errors.loginContent}</p>
@@ -112,7 +114,7 @@ const Login = props => {
                   id="your_pass"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Mật khẩu của bạn"
+                  placeholder={ t('login.password_holder', { framework: "react-i18next" }) }
                 />
                 {errors.password && (
                   <p class="error-title">{errors.password}</p>
@@ -130,7 +132,7 @@ const Login = props => {
                   <span>
                     <span></span>
                   </span>
-                  Ghi nhớ tôi
+                  { t('login.remember_me', { framework: "react-i18next" }) }
                 </label>
                 <br></br>
               </div>
@@ -142,12 +144,12 @@ const Login = props => {
                   id="signin"
                   onClick={(e) => handleLogin(e)}
                   class="form-submit"
-                  value="Đăng nhập"
+                  value={ t('login.login_btn', { framework: "react-i18next" }) }
                 />
               </div>
             </form>
             <div class="social-login">
-              <span class="social-label">Or login with</span>
+              <span class="social-label">{ t('login.social', { framework: "react-i18next" }) }</span>
               <ul class="socials">
                 <li><GoogleLogin
                   clientId="788182537558-o9073nqp6ppfl1epletjb2mi96d5sehm.apps.googleusercontent.com"
@@ -165,4 +167,4 @@ const Login = props => {
   );
 };
 
-export default withRouter(Login);
+export default withRouter(withTranslation("common")(Login));

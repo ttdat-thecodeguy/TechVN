@@ -4,14 +4,14 @@ import "./style.css";
 import "./fonts/material-icon/css/material-design-iconic-font.css";
 import "./fonts/material-icon/css/material-design-iconic-font.min.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  registerActionRequest,
-} from "../../store/action/userAction";
+import {registerActionRequest} from "../../store/action/userAction";
+import { withTranslation } from "react-i18next";
+
 import Notification from "../../components/Notification";
 import * as NotiTypes from "../../constraints/NotificationTypes";
 import * as Types from "../../constraints/ActionTypes";
 
-const Register = () => {
+const Register = ({ t }) => {
   const [name, setName] = useState("");
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -86,7 +86,7 @@ const Register = () => {
       <div class="container">
         <div class="signup-content">
           <div class="signup-form">
-            <h2 class="form-title">Register</h2>
+            <h2 class="form-title">{ t('signup.title', { framework: "react-i18next" }) }</h2>
             <form method="POST" class="register-form" id="register-form">
               <div class="form-group">
                 <label for="name">
@@ -95,7 +95,7 @@ const Register = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your username"
+                  placeholder={ t('signup.username_holder', { framework: "react-i18next" }) }
                   required="required"
                   autofocus="autofocus"
                   value={name}
@@ -111,7 +111,7 @@ const Register = () => {
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Your Email"
+                  placeholder={ t('signup.email_holder', { framework: "react-i18next" }) }
                   required="required"
                   autofocus="autofocus"
                   value={email}
@@ -127,7 +127,7 @@ const Register = () => {
                   type="password"
                   name="pass"
                   id="pass"
-                  placeholder="Password"
+                  placeholder={ t('signup.password_holder', { framework: "react-i18next" }) }
                   required="required"
                   autofocus="autofocus"
                   value={password}
@@ -145,7 +145,7 @@ const Register = () => {
                   type="password"
                   name="re_pass"
                   id="re_pass"
-                  placeholder="Repeat your password"
+                  placeholder={ t('signup.repeat_password', { framework: "react-i18next" }) }
                   required="required"
                   autofocus="autofocus"
                   value={repassword}
@@ -168,7 +168,7 @@ const Register = () => {
                   name="signup"
                   id="signup"
                   class="form-submit"
-                  value="Register"
+                  value={ t('signup.register_btn', { framework: "react-i18next" }) }
                   onClick={(e) => handleRegister(e)}
                 />
               </div>
@@ -182,7 +182,7 @@ const Register = () => {
               />
             </figure>
             <Link to="/login" className="signup-image-link">
-              I am already member
+            { t('signup.to_login', { framework: "react-i18next" }) }
             </Link>
           </div>
         </div>
@@ -191,4 +191,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default withTranslation("common")(Register);
