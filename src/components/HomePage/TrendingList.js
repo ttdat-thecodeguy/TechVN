@@ -1,5 +1,5 @@
 import React,{useEffect} from "react";
-import { Trending } from "../Blog/Trending";
+import  Trending  from "../Blog/Trending";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrendingRequest } from "../../store/action/blogAction";
 import { withRouter } from "react-router-dom";
@@ -12,7 +12,7 @@ const TrendingList = props => {
   const [posts] = useSelector((state) => [state.blogReducers.trend]);
   
   useEffect(() => {
-    dispatch(getTrendingRequest());
+    dispatch(getTrendingRequest(false));
   }, [dispatch]);
   return (
     <>
@@ -22,12 +22,12 @@ const TrendingList = props => {
         </h2>
       </div>
       {
-        posts.map((post, idx) => {
+        posts.list.map((post, idx) => {
           return <Trending history={props.history} rank={ '0' + (idx+1) } post={post} />
         })
       }
-      {  posts.length > 0 &&  <p>
-        <Link to="" class="more">
+      {  posts.list.length > 0 &&  <p>
+        <Link to="/yeu-thich-nhat" class="more">
         { t('homepage.trending.watch_more', { framework: "react-i18next" }) }
         <span class="icon-keyboard_arrow_right"></span>
         </Link>

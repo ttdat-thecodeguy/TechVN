@@ -44,37 +44,43 @@ const HomePage = () => {
           <div class="col">
             <h1>Về Trang</h1>
             <ul>
-              <li>Thông tin trang</li>
-              <li>Sứ Mệnh</li>
-              <li>Dịch Vụ</li>
-              <li>Thông tin Khác</li>
-              <li>F&Q</li>
+              <li><a href="https://tinhte.vn/" alt="tinh tế">Thông Tin Trang</a></li>
+              <li><a href="https://tinhte.vn/" alt="tinh tế">Sứ Mệnh</a></li>
+              <li><a href="https://tinhte.vn/" alt="tinh tế">Dịch Vụ</a></li>
+              <li><a href="https://tinhte.vn/" alt="tinh tế">Thông Tin Khác</a></li>
+              <li><a href="https://tinhte.vn/" alt="tinh tế">F&Q</a></li>
             </ul>
           </div>
           <div class="col">
             <h1>Phần Mềm</h1>
             <ul>
-              <li>Thông tin công nghệ</li>
-              <li>Phần Mềm Mới</li>
-              <li>Lỗi Phần Mềm</li>
-              <li>Mẹo Hữu Ích</li>
+              <li><a href="https://tinhte.vn/" alt="tinh tế">Thông Tin Công Nghệ</a></li>
+              <li><a href="https://tinhte.vn/" alt="tinh tế">Phần Mềm Mới</a></li>
+              <li><a href="https://tinhte.vn/" alt="tinh tế">Lỗi Phần Mềm</a></li>
+              <li><a href="https://tinhte.vn/" alt="tinh tế">Mẹo Hữu Ích</a></li>
               
             </ul>
           </div>
           <div class="col">
             <h1>Liên Kết</h1>
             <ul>
-              <li>Tinh Tế</li>
-              <li>Thế Giới Di Động</li>
-              <li>StackJava</li>
+              <li>
+                  <a href="https://tinhte.vn/" alt="tinh tế">Tinh Tế</a>
+              </li>
+              <li>
+                <a href="https://tinhte.vn/" alt="tinh tế">Thế Giới Di Động</a>
+              </li>
+              <li>
+                <a href="https://tinhte.vn/" alt="tinh tế">StackJava</a>
+              </li>
             </ul>
           </div>
           <div class="col">
             <h1>Hỗ Trợ</h1>
             <ul>
-              <li>Liên Hệ Chúng tôi</li>
-              <li>Fanpage Chính thức</li>
-              <li>Zalo Chính Thức</li>
+              <li> <a href="https://tinhte.vn/" alt="tinh tế">Liên Hệ Chúng Tôi</a></li>
+              <li> <a href="https://tinhte.vn/" alt="tinh tế">Facebook chính thức</a></li>
+              <li> <a href="https://tinhte.vn/" alt="tinh tế">Zalo Chính Thức</a></li>
             </ul>
           </div>
           <div class="col social">

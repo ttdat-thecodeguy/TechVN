@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import ContentLoader from "react-content-loader";
 import { formatPublishDate } from '../../utils/datetimejs'
 import {Link} from 'react-router-dom'
-export const Trending = (props) => {
-  const { rank, post } = props;
-
+import { withTranslation } from "react-i18next";
+const Trending = ({ rank, post, t, i18n }) => {
   let [isLoved, setIsLoved] = useState(false)
 
   const handleLover = e => {
@@ -44,14 +43,15 @@ export const Trending = (props) => {
             <span><i className="fa fa-heart" style={{ color: `${!isLoved ? 'gray' : 'red'}` }} onClick={ e => handleLover(e)} aria-hidden="true"></i></span>
           </span>
           <span class="date-read">
-            {formatPublishDate(post.publishDate)}
+          { i18n.language === "vn" ? formatPublishDate(post.publishDate, false) : formatPublishDate(post.publishDate, true)}
           </span>
         </div>
       </div>
     </div>
-
   );
 };
+export default withTranslation("common")(Trending);
+
 
 export const LoaderTrending = () => {
   return (

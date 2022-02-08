@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { BlogBig } from "../Blog/BlogBig";
-import { BlogChild } from "../Blog/BlogChild";
+import  BlogBig  from "../Blog/BlogBig";
+import  BlogChild  from "../Blog/BlogChild";
 import { useDispatch, useSelector } from 'react-redux'
 import { getTopLoveRequest } from '../../store/action/blogAction' 
 import { withTranslation } from "react-i18next";
@@ -34,7 +34,7 @@ const TopLike = props => {
       </div>
       <div class="row">
         <div class="col-md-6">
-          {toplike.list.length > 0 && <BlogBig post={toplike.list[0]} />}
+          {toplike.list.length > 0 && <BlogBig post={toplike.list[0]} isCate={false} />}
         </div>
         <div class="col-md-6">
           {showPostChild(toplike.list)}

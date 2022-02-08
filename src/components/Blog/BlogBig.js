@@ -2,30 +2,41 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import { formatPublishDate } from "../../utils/datetimejs";
 import * as Config from "../../constraints/Config";
+import ReactShowMoreText from "react-show-more-text";
 
 import { Link } from "react-router-dom";
+import { withTranslation } from "react-i18next";
 
-export const BlogBig = (props) => {
-  const { post } = props;
+ const BlogBig = ({ post, t, i18n, isCate }) => {
   return (
     <div className="post-entry-1">
       <Link to={"/blog/" + post.link}>
         <img
           src={Config.IMG_URL_BLOG + post.image.name}
           alt="img"
-          className="img-fluid" />
+          className={`img-fluid${isCate === true ? ' cate-img' : ''}`}
+        />
       </Link>
       <h2>
         <Link to={"/blog/" + post.link}>{post.title}</Link>
       </h2>
-      <p>{props.post.description}</p>
+      <ReactShowMoreText
+        lines={3}
+        more="Xem Thêm"
+        less="Ẩn Đi"
+        expanded={false}
+        width={220}
+        truncatedEndingComponent={"... "}>
+        {post.description}
+      </ReactShowMoreText>
+
       <div class="post-meta">
         <span class="d-block">
           <a href="/">{post.account.name}</a> Trong{" "}
           <a href="/">{post.types[0].name}</a>
         </span>
         <span className="date-read">
-          {formatPublishDate(post.publishDate)}
+        { i18n.language === "vn" ? formatPublishDate(post.publishDate, false) : formatPublishDate(post.publishDate, true)}
           <span className="mx-1">&bull;</span>
         </span>
         <span className="icon-star2"></span>
@@ -33,6 +44,8 @@ export const BlogBig = (props) => {
     </div>
   );
 };
+
+export default withTranslation("common")(BlogBig)
 
 export const LoaderBlogBig = () => {
   return (

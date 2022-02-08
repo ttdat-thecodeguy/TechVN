@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BlogBig } from "../../components/Blog/BlogBig";
+import BlogBig from "../../components/Blog/BlogBig";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoriesBlogRequest, getBlogBySearchNameRequest } from "../../store/action/blogAction";
@@ -302,7 +302,7 @@ const CateBlog = (props) => {
                 {cate.list.map((item, idx) => {
                   return (
                     <div className="col-3">
-                      <BlogBig post={item} />
+                      <BlogBig post={item} isCate={true} />
                     </div>
                   );
                 })}

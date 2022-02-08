@@ -34,9 +34,9 @@ export const getRecommendRequest = () => {
   };
 };
 
-export const getTrendingRequest = () => {
+export const getTrendingRequest = (isList) => {
   return (dispatch) => {
-    getTrending().then((res) => {
+    getTrending(isList).then((res) => {
       dispatch({
         type: Types.GET_TRENDING_BLOG,
         payload: res.data || []
@@ -44,6 +44,8 @@ export const getTrendingRequest = () => {
     });
   };
 };
+
+
 
 export const getCategoriesBlogRequest = (
   start,

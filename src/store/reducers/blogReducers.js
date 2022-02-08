@@ -1,7 +1,11 @@
 import * as Types from "../../constraints/ActionTypes";
 
 const initState = {
-  trend: [],
+  trend: {
+    list: [],
+    page: 0,
+    size: 0
+  },
   recommend: [],
   toplike: {
     list: [],
@@ -53,7 +57,11 @@ const blogReducers = (state = initState, action) => {
     case Types.GET_BLOGS_LOVED:
       return {...state, loved: action.payload}
     case Types.GET_TRENDING_BLOG:
-        return {...state, trend: action.payload}
+        return {...state, trend: {
+          list: action.payload.blogs,
+          page: action.payload.page,
+          size: action.payload.size,
+        }}
     case Types.ADD_BLOG:
       return {...state, blog: [...state.blog, action.payload]};
     case Types.ADD_COMMENT:

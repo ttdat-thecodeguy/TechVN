@@ -4,9 +4,10 @@ import { formatPublishDate } from "../../utils/datetimejs";
 import * as Config from "../../constraints/Config";
 
 import { Link } from "react-router-dom";
+import { withTranslation } from "react-i18next";
 
-export const BlogChild = (props) => {
-  const { post } = props;
+const BlogChild = ({ post, t, i18n }) => {
+  
   return (
     <div class="post-entry-2 d-flex">
       <div
@@ -27,7 +28,7 @@ export const BlogChild = (props) => {
             <span>{post.types[0].name}</span>
           </span>
           <span class="date-read">
-            {formatPublishDate(post.publishDate)}
+          { i18n.language === "vn" ? formatPublishDate(post.publishDate, false) : formatPublishDate(post.publishDate, true)}
             <span class="mx-1">&bull;</span>{" "}
             <span class="icon-star2 icon-statView"></span>
           </span>
@@ -36,6 +37,8 @@ export const BlogChild = (props) => {
     </div>
   );
 };
+
+export default withTranslation("common")(BlogChild);
 
 export const LoaderBlogChild = () => {
   return (

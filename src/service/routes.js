@@ -6,8 +6,10 @@ import AboutMe from "../container/AboutMe";
 import Login from "../container/Auth/Login";
 import Register from "../container/Auth/Register";
 import Blog from "../container/Blog";
+
 import UserDetails from "../container/User/UserDetails";
 import UserBlog from "../container/User/UserBlog";
+
 import BlogEdit from "../container/Blog/BlogEdit";
 import CateBlog from "../container/Cate";
 
@@ -18,6 +20,7 @@ import AdminDashboard from "../container/Admin";
 import UserDashboard from "../container/Admin/User";
 import BlogsDashboard from "../container/Admin/Blog";
 import TagsDashboard from "../container/Admin/Tags";
+import TrendingFullList from "../container/Blog/TrendingFullList";
 
 
 export const routes = [
@@ -46,6 +49,11 @@ export const routes = [
     path: "/danh-sach-blog/:searchName",
     exact: false,
     main: () => <CateBlog />
+  },
+  {
+    path: "/yeu-thich-nhat",
+    exact: false,
+    main: () => <TrendingFullList />
   },
   {
     path: "/danh-muc/:id/:name",

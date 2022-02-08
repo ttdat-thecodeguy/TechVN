@@ -13,8 +13,6 @@ export const getUserDetails = () => {
     return axiosInstance.get(`/api/account/details/`)
 }
 
-
-
 export const registerSocialLoginService = req => {
     const postData = {
         id: req.googleId,
@@ -51,6 +49,9 @@ export const getAllBlogs = () => {
     return axiosInstance.get(`/api/account/blog/`)
 }
 
+// export const editUsers = (data) => {
+//     return 
+// }
 
 export const formatError = err => {
     switch (err.response.data) {

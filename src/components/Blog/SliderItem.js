@@ -4,9 +4,10 @@ import { formatPublishDate } from '../../utils/datetimejs'
 
 import { Link } from 'react-router-dom'
 import ReactShowMoreText from "react-show-more-text";
+import { withTranslation } from "react-i18next";
 
-const SliderItem = props => {
-  const { post } = props
+const SliderItem =  ({ post, t, i18n })=> {
+  
   return (
     <div class="site-section">
       <div class="container">
@@ -32,7 +33,7 @@ const SliderItem = props => {
                 anchorClass="my-anchor-css-class"
                 
                 expanded={false}
-                width={280}
+                width={220}
                 truncatedEndingComponent={"... "}>
                 {post.description}    
               </ReactShowMoreText>
@@ -44,7 +45,8 @@ const SliderItem = props => {
                 <span>{post.account.username}</span> Trong <span>{post.types[0].name}</span>
               </span>
               <span class="date-read">
-              {formatPublishDate(post.publishDate)} <span class="mx-1">&bull;</span>
+              { i18n.language === "vn" ? formatPublishDate(post.publishDate, false) : formatPublishDate(post.publishDate, true)}
+              <span class="mx-1">&bull;</span>
                 <span class="icon-star2"></span>
               </span>
             </div>
@@ -54,4 +56,4 @@ const SliderItem = props => {
     </div>
   );
 };
-export default SliderItem
+export default withTranslation("common")(SliderItem)

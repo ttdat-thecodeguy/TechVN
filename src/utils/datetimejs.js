@@ -8,49 +8,54 @@ export const formateDate = (timestamp) => {
 };
 
 
-export const formatPublishDate = (timestamp) => {
+
+export const formatPublishDate = (timestamp, isEn) => {
   let date = formateDate(timestamp);
   let month = ""
+
+    console.log(date.month)
+
   switch (date.month) {
-    case 1:
-      month = "Một";
+    case 0:
+      month = !isEn ? "Một" : "January";
       break
+    case 1:
+        month = !isEn ? "Hai" : "February";
+        break
     case 2:
-        month = "Hai";
+        month = !isEn ? "Ba" : "March";
         break
     case 3:
-        month = "Ba";
+        month = !isEn ? "Bốn" : "April";
         break
     case 4:
-        month = "Bốn";
+        month = !isEn ? "Năm" : "May";
         break
     case 5:
-        month = "Năm";
+        month = !isEn ? "Sáu" : "June";
         break
     case 6:
-        month = "Sáu";
-        break
-    case 7:
+        month = !isEn ? "Bảy" : "July";
         month = "Bảy";
         break
+    case 7:
+        month = !isEn ? "Tám" : "Argust";
+        break
     case 8:
-        month = "Tám";
+        month = !isEn ? "Chín" : "September";
         break
     case 9:
-        month = "Chín";
+        month = !isEn ? "Mười" : "October";
         break
     case 10:
-        month = "Mười";
+        month = !isEn ? "Mười Một" : "November";
         break
     case 11:
-        month = "Mười Một";
-        break
-    case 12:
-        month = "Mười Hai";
+        month = !isEn ? "Mười Hai" : "December";
         break
     default:
         month = "";
         break
   }
-  return "Ngày " + date.day + " Tháng " + month + " " + date.year
+  return !isEn ? "Ngày " + date.day + " Tháng " + month + " " + date.year : `${month}, ${date.day} ${date.year}`
 };

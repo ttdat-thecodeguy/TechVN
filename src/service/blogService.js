@@ -6,8 +6,8 @@ export const getTopLike = () => {
     return axiosInstance.get(`/api/blog/trending?size=4&start=0&sort=DESC&isList=false`)
 }
 
-export const getTrending = () => {
-    return axiosInstance.get("/api/blog/toplove?rows=5&isList=false")
+export const getTrending = (isList) => {
+    return axiosInstance.get(`/api/blog/toplove?rows=5&isList=${isList}`)
 }
 
 export const getRecommend = () => {
