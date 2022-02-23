@@ -67,7 +67,14 @@
         "to_login": "I am already member"
     },
     "categories":{
-        
+        "all":{
+            "title": "All Blogs"
+        },
+        "withCate": " {{cate}} ",
+        "search": {
+            "title": "Search By {{name}} In All",
+            "withCate": "Search By {{name}} In {{cate}}"
+        }
     },
     "footer":{
         "pre":{},

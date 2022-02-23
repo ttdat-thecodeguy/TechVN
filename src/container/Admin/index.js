@@ -56,7 +56,7 @@ const AdminDashboard = (props) => {
       </div>
 
       <div class="row">
-        <div class="col border-top-0 border-right-0 border-bottom-0 border-primary card mb-3 ml-3 w-75 bg-midnight-bloom widget-content">
+        <div class="col-lg border-top-0 border-right-0 border-bottom-0 border-primary card mb-3 ml-3 w-75 bg-midnight-bloom widget-content">
           <div class="widget-content-left">
             <div class="widget-heading text-white">Tổng User</div>
             <div class="widget-subheading text-white">Thống Kê Mới Nhất</div>
@@ -68,7 +68,7 @@ const AdminDashboard = (props) => {
           </div>
         </div>
 
-        <div class="col border-top-0 border-right-0 border-bottom-0 border-primary card mb-3 ml-3 w-75 bg-arielle-smile widget-content">
+        <div class="col-lg border-top-0 border-right-0 border-bottom-0 border-primary card mb-3 ml-3 w-75 bg-arielle-smile widget-content">
           <div class="widget-content-left">
             <div class="widget-heading text-white">Tổng User</div>
             <div class="widget-subheading text-white">Thống Kê Mới Nhất</div>
@@ -80,7 +80,7 @@ const AdminDashboard = (props) => {
           </div>
         </div>
 
-        <div class="col border-top-0 border-right-0 border-bottom-0 border-primary card mb-3 ml-3 w-75 mr-3 bg-grow-early widget-content">
+        <div class="col-lg border-top-0 border-right-0 border-bottom-0 border-primary card mb-3 ml-3 w-75 mr-3 bg-grow-early widget-content">
           <div class="widget-content-left">
             <div class="widget-heading text-white">Tổng User</div>
             <div class="widget-subheading text-white">Thống Kê Mới Nhất</div>
@@ -94,14 +94,15 @@ const AdminDashboard = (props) => {
       </div>
 
       <div className="row h-main">
-        <div className="col-8">
-
-        <Line options={Config.ColumnDefaultOptions}  data={columnData} width={400} height={400}  />
+        <div className="col-lg-8">
+        <div  style={{ position: "relative", width: "100vw" }}>
+        <Line options={Config.ColumnDefaultOptions}  data={columnData}  />
+        </div>
 
 
 
           <div className="row">
-            <div class="col border-top-0 border-right-0 border-bottom-0 card mb-3 ml-3 w-75 border-widget border-success widget-content">
+            <div class="col-lg border-top-0 border-right-0 border-bottom-0 card mb-3 ml-3 w-75 border-widget border-success widget-content">
               <div class="widget-content-left">
                 <img
                   src={process.env.PUBLIC_URL + "/images/admin/phone.png"}
@@ -116,7 +117,7 @@ const AdminDashboard = (props) => {
               </div>
             </div>
 
-            <div class="col border-top-0 border-right-0 border-bottom-0 card mb-3 ml-3 w-75 border-widget border-success widget-content">
+            <div class="col-lg border-top-0 border-right-0 border-bottom-0 card mb-3 ml-3 w-75 border-widget border-success widget-content">
               <div class="widget-content-left">
                 <img
                   src={process.env.PUBLIC_URL + "/images/admin/email.png"}
@@ -131,7 +132,7 @@ const AdminDashboard = (props) => {
               </div>
             </div>
 
-            <div class="col border-top-0 border-right-0 border-bottom-0 card mb-3 ml-3 w-75 border-widget border-success widget-content">
+            <div class="col-lg border-top-0 border-right-0 border-bottom-0 card mb-3 ml-3 w-75 border-widget border-success widget-content">
               <div class="widget-content-left">
                 <img
                   src={process.env.PUBLIC_URL + "/images/admin/zalo.png"}
@@ -148,7 +149,7 @@ const AdminDashboard = (props) => {
 
           </div>
         </div>
-        <div className="col-4">
+        <div className="col-lg-4">
           <ul className="m-0 p-0 ">
             <li className="card d-flex flex-d-row">
               <img

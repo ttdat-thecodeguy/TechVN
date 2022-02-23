@@ -1,28 +1,29 @@
 import { Link } from "react-router-dom";
-import "../../container/Admin/Admin.css"
-import $ from 'jquery';
-
+import "../../container/Admin/Admin.css";
+import $ from "jquery";
 
 const AdminHeader = () => {
-
-
-  $('#openNav').on("click", function () {
+  $("#openNav").on("click", function () {
     $('#sideNav').width(220)
-    $('#mainAdmin').css({marginLeft: "250px"})
-    $(this).hide()
+    $("#mainAdmin").hide();
+    $(this).hide();
   });
 
-  $('#closeNav').on("click", function () {
+  $("#closeNav").on("click", function () {
     $('#sideNav').width(0)
-    $('#openNav').show()
-    $('#mainAdmin').css({marginLeft: "50px"})
-  })
+    $("#openNav").show();
+    $("#mainAdmin").show();
+  });
 
   return (
     <>
-      <button class="openbtn" id="openNav">&#9776;</button>
+      <button class="openbtn" id="openNav">
+        &#9776;
+      </button>
       <ul class="sidenav list-group" id="sideNav">
-        <span id="closeNav" class="closebtn">x</span>
+        <span id="closeNav" class="closebtn">
+          x
+        </span>
         <li style={{ borderBottom: "1px solid black" }}>
           <div class="row">
             <div class="col-3">
@@ -35,9 +36,9 @@ const AdminHeader = () => {
               />
             </div>
             <div class="col-9">
-				<span>Patron Pen</span>
-				<p style={{ fontWeight: 600 }} >admin</p>
-			</div>
+              <span>Patron Pen</span>
+              <p style={{ fontWeight: 600 }}>admin</p>
+            </div>
           </div>
         </li>
 
@@ -91,7 +92,6 @@ const AdminHeader = () => {
                     <i class="fa fa-chevron-right"></i>Quản Lí Tags
                   </Link>
                 </li>
-                
               </ul>
             </div>
           </div>

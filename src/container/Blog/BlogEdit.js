@@ -29,6 +29,10 @@ const BlogEdit = (props) => {
   const [imageChoose, setImageChoose] = useState(new Array(0).fill(""));
   const [types, setTypes] = useState([]);
 
+  useEffect(() => {
+
+  },[])
+
   const dispatch = useDispatch();
 
   const [imgList, typeList] = useSelector((state) => [
@@ -74,12 +78,10 @@ const BlogEdit = (props) => {
     imageChoose.forEach(img => {
       if (img != null) img_c += `<img src="${Config.IMG_URL_BLOG + img.name}" alt="img-upload" />`;
     })
-    console.log(imageChoose)
     setContentBlog(content => content + img_c);
     dispatch(getTypeRequest())
   }, [dispatch, imageChoose]);
 
-  console.log(props.match.params.id)
 
   return (
     <div class="container">
@@ -122,8 +124,8 @@ const BlogEdit = (props) => {
               setImgChoose={setImageChoose}
             />
           )}
-
-          <CKEditor
+          
+         { Editor !== undefined && Editor !== null &&  <CKEditor
             editor={Editor}
             data={contentBlog}
             config={Config.editorConfig}
@@ -134,7 +136,7 @@ const BlogEdit = (props) => {
             }}
             onBlur={(event, editor) => {}}
             onFocus={(event, editor) => {}}
-          />
+          /> }
         </div>
         <div class="form-group">
           <label>Chủ đề</label>
@@ -143,7 +145,7 @@ const BlogEdit = (props) => {
             { typeList && typeList.map(type => {
               return (
 
-                <div class="col-4">
+                <div class="col-lg-4 col-6">
                 <input
                   type="checkbox"
                   name="remember-me"

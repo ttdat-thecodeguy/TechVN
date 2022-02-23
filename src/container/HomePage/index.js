@@ -40,8 +40,9 @@ const HomePage = () => {
       </div>
 
       <div class="footer">
-        <div class="contain">
-          <div class="col">
+        <div class="contain row">
+          
+          <div class="col-lg-3 col-6 f-c">
             <h1>Về Trang</h1>
             <ul>
               <li><a href="https://tinhte.vn/" alt="tinh tế">Thông Tin Trang</a></li>
@@ -51,7 +52,7 @@ const HomePage = () => {
               <li><a href="https://tinhte.vn/" alt="tinh tế">F&Q</a></li>
             </ul>
           </div>
-          <div class="col">
+          <div class="col-lg-3 col-6 f-c">
             <h1>Phần Mềm</h1>
             <ul>
               <li><a href="https://tinhte.vn/" alt="tinh tế">Thông Tin Công Nghệ</a></li>
@@ -61,7 +62,7 @@ const HomePage = () => {
               
             </ul>
           </div>
-          <div class="col">
+          <div class="col-lg-3 col-6 f-c">
             <h1>Liên Kết</h1>
             <ul>
               <li>
@@ -75,7 +76,7 @@ const HomePage = () => {
               </li>
             </ul>
           </div>
-          <div class="col">
+          <div class="col-lg-3 col f-c">
             <h1>Hỗ Trợ</h1>
             <ul>
               <li> <a href="https://tinhte.vn/" alt="tinh tế">Liên Hệ Chúng Tôi</a></li>
@@ -83,22 +84,7 @@ const HomePage = () => {
               <li> <a href="https://tinhte.vn/" alt="tinh tế">Zalo Chính Thức</a></li>
             </ul>
           </div>
-          <div class="col social">
-            <h1>Nhận Tin Mới Nhất</h1>
-            <form class="form-inline">
-              <div class="form-group">
-              <input
-                  type="email"
-                  class="form-control-app"
-                  placeholder="Nhập Email..."
-                />
-                <button type="submit" class="btn btnSend">
-                  <span class="icon-paper-plane"></span>
-                </button>
-              </div>
-              
-            </form>
-          </div>
+          
           <div class="clearfix"> </div>
         </div>
       </div>

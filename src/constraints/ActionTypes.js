@@ -23,6 +23,7 @@ export const DELETE_BLOG = "delete blog"
 export const ADD_COMMENT = "add comment"
 //// Home
 export const GET_TRENDING_BLOG = "trending blog"
+export const UPDATE_TRENDING_BLOG = "update trending blog"
 export const GET_TOP_LOVE = "get top love "
 export const GET_RECOMMEND = "get recommend"
 //// others
@@ -38,4 +39,3 @@ export const GET_TYPE_BY_LEVEL = "get type by level"
 /// admin
 export const GET_USERS = "get all user"
 export const GET_BLOGS = "get all blogs" 
-

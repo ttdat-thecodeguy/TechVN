@@ -17,6 +17,7 @@ const UserDetails = (props) => {
   const handleSubmit = e=>{
       e.preventDefault();
       console.log(e.target.full_name.value)
+      console.log(e.target.brief.value)
   }
 
   return (
@@ -65,13 +66,14 @@ const UserDetails = (props) => {
                           <input
                             defaultValue={user.email}
                             class="text-muted f-w-400 edit-user"
+                            name="email"
                           />
                         </div>
                         <div class="col-sm-6">
                           <p class="m-b-10 f-w-600">Địa Chỉ</p>
                           <input
                             defaultValue={user.address}
-                            
+                            name="address"
                             class="text-muted f-w-400 edit-user"
                           />
                         </div>
@@ -82,11 +84,11 @@ const UserDetails = (props) => {
                       <div class="row">
                         <div class="col-sm-6">
                           <p class="m-b-10 f-w-600">Lĩnh vực</p>
-                          <div
+                          <textarea
                             class="edit-brief text-muted f-w-400"
-                            contentEditable>
-                            {user.brief}
-                          </div>
+                            contentEditable name="brief" value={user.brief}>
+                           
+                          </textarea>
                           {/* <h6 class="text-muted f-w-400">{user.brief}</h6> */}
                         </div>
                       </div>

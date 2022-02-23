@@ -12,6 +12,8 @@
     "axios": "^0.21.1",
     "chart.js": "^3.7.0",
     "ckeditor5-custom-build": "file:ckeditor5",
+    "draft-js": "^0.11.7",
+    "draftjs-to-html": "^0.9.1",
     "form-data": "^4.0.0",
     "html-react-parser": "^1.2.8",
     "i18next": "^21.6.10",
@@ -22,6 +24,7 @@
     "react-chartjs-2": "^4.0.0",
     "react-content-loader": "^6.0.3",
     "react-dom": "^17.0.2",
+    "react-draft-wysiwyg": "^1.14.7",
     "react-dropzone": "^11.3.4",
     "react-google-login": "^5.2.2",
     "react-html-parser": "^2.0.2",
@@ -37,6 +40,7 @@
     "react-table": "^7.7.0",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.49.8",
     "slick-carousel": "^1.8.1",
     "sockjs": "^0.3.21",
     "sockjs-client": "^1.5.2",
@@ -70,6 +74,8 @@
     ]
   },
   "devDependencies": {
-    "react-show-more-text": "^1.5.2"
+    "node-sass": "^7.0.1",
+    "react-show-more-text": "^1.5.2",
+    "sass-loader": "^12.6.0"
   }
 }

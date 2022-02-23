@@ -8,7 +8,8 @@ import {
   getCateBlog,
   searchBlog,
   getBlogLoved,
-  addComment
+  addComment,
+  update
 } from "../../service/blogService";
 import { loadAction } from "./loadingAction";
 
@@ -34,11 +35,27 @@ export const getRecommendRequest = () => {
   };
 };
 
-export const getTrendingRequest = (isList) => {
+export const getTrendingRequest = (isList, start) => {
+
+  console.log("run" + start)
+
   return (dispatch) => {
-    getTrending(isList).then((res) => {
+    getTrending(isList, start).then((res) => {
       dispatch({
         type: Types.GET_TRENDING_BLOG,
+        payload: res.data || []
+      });
+    });
+  };
+};
+
+
+export const updateTrendingRequest = (isList, start) => {
+
+  return (dispatch) => {
+    getTrending(isList, start).then((res) => {
+      dispatch({
+        type: Types.UPDATE_TRENDING_BLOG,
         payload: res.data || []
       });
     });
@@ -127,16 +144,27 @@ export const getBlogLovedRequest = () => {
 export const addRequest = (data, history) => {
   return (dispatch) => {
     add(data).then((res) => {
-      dispatch({
-        type: Types.ADD_BLOG,
-        payload: res.data.blog
-      });
       dispatch(loadAction(false));
-
       history.push(`/blog/${res.data.blog.link}`);
     });
   };
 };
+
+export const updateRequest = (data) => {
+  return dispatch => {
+    update(data).then(res => {
+
+      console.log(res.data)
+
+      dispatch({
+        type: Types.UPDATE_BLOG,
+        payload: res.data
+      })
+      dispatch(loadAction(false));
+     
+    });
+  }
+}
 
 /*********add comment request************* */
 

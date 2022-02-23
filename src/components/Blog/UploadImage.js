@@ -108,7 +108,7 @@ const UploadImage = (props) => {
     new Array(props.listImage.length).fill({})
   );
 
-    console.log(imgStyle)
+    // console.log(imgStyle)
 
   return (
     <Modal
@@ -125,7 +125,7 @@ const UploadImage = (props) => {
           props.listImage !== null &&
           props.listImage.map((image, idx) => {
             return (
-              <div class="col-2">
+              <div class="col-lg-3 col-4">
                 <img
                   class="img-responsive img-upload mb-2"
                   onClick={(e) => handleChangeStyleImage(e, idx)}

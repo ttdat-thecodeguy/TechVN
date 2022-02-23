@@ -13,7 +13,7 @@ const UserBlog = () => {
   }, [dispatch]);
 
   const [blogs] = useSelector((state) => [state.userReducers.blogs]);
-
+  // console.log(blogs)
   return (
     <div class="container">
       <div class="section-title m-4">
@@ -27,7 +27,7 @@ const UserBlog = () => {
             return (
               <div class="card pt-5 pb-5 pl-3 pr-3">
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-lg-4 col-12">
                     <img
                       class="img-responsive"
                       width="100%"
@@ -35,7 +35,7 @@ const UserBlog = () => {
                       alt="IMG_BLOG"
                     />
                   </div>
-                  <div class="contents col-6">
+                  <div class="contents col-lg-6">
                     <h1>
                       <Link to={'/blog/' + blog.link}>
                         {blog.title}
@@ -53,13 +53,13 @@ const UserBlog = () => {
                       <Link to="">{blog.account.name}</Link> Trong <Link href="#">{blog.types[0].name}</Link>
                       </span>
                       <span class="date-read">
-                        {DateTimeUtils.formatPublishDate(blog.publish_date)}<span class="mx-1">&bull;</span> 3 phút đọc
+                        {DateTimeUtils.formatPublishDate(blog.publishDate)}<span class="mx-1">&bull;</span> 3 phút đọc
                         <span class="icon-star2"></span>
                       </span>
                     </div>
                   </div>
-                  <div class="col-2">
-                    <ul>
+                  <div class="col-lg-2">
+                    <ul class="blogs-handle-manager">
                       <li class="bg-primary tool">
                         <i
                           class="fa fa-pencil text-light"

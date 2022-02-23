@@ -13,7 +13,6 @@ export const formatPublishDate = (timestamp, isEn) => {
   let date = formateDate(timestamp);
   let month = ""
 
-    console.log(date.month)
 
   switch (date.month) {
     case 0:

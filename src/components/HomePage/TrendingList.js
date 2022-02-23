@@ -12,7 +12,7 @@ const TrendingList = props => {
   const [posts] = useSelector((state) => [state.blogReducers.trend]);
   
   useEffect(() => {
-    dispatch(getTrendingRequest(false));
+    dispatch(getTrendingRequest(false, 0));
   }, [dispatch]);
   return (
     <>

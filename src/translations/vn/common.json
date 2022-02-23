@@ -68,7 +68,14 @@
         "to_login": "Tôi đã có tài khoản"
     },
     "categories":{
-
+        "all":{
+            "title": "Toàn Bộ Bài Viết"
+        },
+        "withCate": " {{cate}} ",
+        "search": {
+            "title": "Tìm Kiếm :{{name}} Trong Toàn Bộ",
+            "withCate": "Tìm Kiếm: {{name}} Trong {{cate}}"
+        }
     },
     "footer":{
         "pre":{},

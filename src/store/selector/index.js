@@ -3,17 +3,21 @@ import { isEmpty } from 'lodash'
 export const isAuth = state => {
     if(!isEmpty(state.userReducers.auth)) return state.userReducers.auth
     else {
-        if(localStorage.getItem("user") != null)  return JSON.parse(localStorage.getItem("user"))
-        else return null
+        try{
+            if(localStorage.getItem("user") != null)  return JSON.parse(localStorage.getItem("user"))
+            else return null;
+        } catch(err) {
+            return null;
+        }
     }
 }
 
-export const levelTypeSelector = level => {
+export const levelTypeSelector = (level, t) => {
     return level === 1
-    ? "Phần Mềm"
-    : level === 2
-    ? "Phần Cứng"
-    : "Thế Giới Công Nghệ"
+        ? t("header.lnavbar.type.level.l1", { framework: "react-i18next" })
+        : level === 2
+        ? t("header.lnavbar.type.level.l2", { framework: "react-i18next" })
+        : t("header.lnavbar.type.level.l3", { framework: "react-i18next" })
 }
 
 export const mapLovedBlog = state => {

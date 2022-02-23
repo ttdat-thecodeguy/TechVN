@@ -139,7 +139,7 @@ export const AdminRoutes = [
     main: ({ match, history }) => <BlogsDashboard match={match} />
   },
   {
-    path: "/admin/tag/",
+    path: "/admin/tags",
     exact: false,
     main: ({ match, history }) => <TagsDashboard match={match} />
   },

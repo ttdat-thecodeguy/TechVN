@@ -62,8 +62,21 @@ const blogReducers = (state = initState, action) => {
           page: action.payload.page,
           size: action.payload.size,
         }}
+    case Types.UPDATE_TRENDING_BLOG:
+      let newList = state.trend.list   
+      newList.push.apply(newList, action.payload.blogs)   
+      return {...state, trend: {
+          list: newList,
+          page: action.payload.page,
+          size: action.payload.size,
+      }}
     case Types.ADD_BLOG:
       return {...state, blog: [...state.blog, action.payload]};
+    case Types.UPDATE_BLOG: 
+      return {...state, blog: {
+        ...state.blog,
+        content: action.payload.blog.content
+      }}
     case Types.ADD_COMMENT:
       return {...state, comments: [...state.comments, action.payload]}
     default:

@@ -7,7 +7,8 @@ import { loadAction } from "../../store/action/loadingAction";
 
 import { Link, useParams } from "react-router-dom";
 import {isArray} from "lodash"
-const CateBlog = (props) => {
+import { withTranslation } from "react-i18next";
+const CateBlog = ({ t }) => {
   const dispatch = useDispatch();
 
   //// init state
@@ -37,21 +38,38 @@ const CateBlog = (props) => {
     }
 
     _search = isSearchAll ? searchName : searchContent;
-
+    
     if (id !== null && id !== undefined) {
       if(isSearch === true || isSearchAll === true){      
+        document.title = t("categories.search.withCate", {
+          name : _search,
+          cate : cate.type.name,
+          framework: "react-i18next",
+        })
         dispatch(getBlogBySearchNameRequest(page, 8, isDateAscSort, isTitleAscSort, id, _search))
       }else{
+        document.title = t("categories.withCate", {
+          cate : cate.type.name,
+          framework: "react-i18next",
+        })
         dispatch(getCategoriesBlogRequest(page, 8, isDateAscSort, isTitleAscSort, id));
       }
 
     } else{
       if(isSearch === true || isSearchAll === true){
+        document.title = t("categories.search.title", {
+          name : _search,
+          framework: "react-i18next",
+        })
         dispatch(getBlogBySearchNameRequest(page, 8, isDateAscSort, isTitleAscSort, 0, _search))
       }else{
+        document.title = t("categories.all", {
+          framework: "react-i18next",
+        })
         dispatch(getCategoriesBlogRequest(page, 8, isDateAscSort, isTitleAscSort, 0))
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, id, isDateAscSort, isSearch, isTitleAscSort, page, searchContent, searchName]);
 
   /// type
@@ -162,7 +180,7 @@ const CateBlog = (props) => {
   return (
     <>
       <div className="row mt-4">
-        <div class="col-lg-3 ml-3 card">
+        <div class="col-lg-3 card">
           <div class="card-body">
             <div class="d-flex">
               <svg
@@ -298,10 +316,10 @@ const CateBlog = (props) => {
           </div>}
           {cate !== undefined && cate.list !== undefined &&  cate.list.length > 0 ? (
             <>
-              <div className="row">
+              <div className="row container mr-0">
                 {cate.list.map((item, idx) => {
                   return (
-                    <div className="col-3">
+                    <div className="col-12 col-lg-3">
                       <BlogBig post={item} isCate={true} />
                     </div>
                   );
@@ -349,4 +367,4 @@ const CateBlog = (props) => {
   );
 };
 
-export default CateBlog;
+export default withTranslation("common")(CateBlog);

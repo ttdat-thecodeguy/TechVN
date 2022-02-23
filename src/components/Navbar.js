@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   logoutActionRequest,
   getAllNotificationRequest,
-  addNotificationRequest
+  addNotificationRequest,
 } from "../store/action/userAction";
 
 import { getTypeRequest } from "../store/action/typeAction";
@@ -20,25 +20,27 @@ import SockJS from "sockjs-client";
 import Stomp from "stompjs";
 import { withTranslation } from "react-i18next";
 import { useState } from "react";
+import { selectNotiNumber } from "../utils/utils"
+
+import { levelTypeSelector } from "../store/selector"
 
 const Navbar = (props) => {
   const { history, auth, isLogin, t, i18n } = props;
-  
-  const [lang, setLang] = useState(i18n.language)
 
-  i18n.changeLanguage().then(t => setLang(i18n.language));
+  const [lang, setLang] = useState(i18n.language);
+
+  i18n.changeLanguage().then((t) => setLang(i18n.language));
 
   const dispatch = useDispatch();
 
   //// type
   const [types, notification] = useSelector((state) => [
     state.typeReducers,
-    state.userReducers.notification
+    state.userReducers.notification,
   ]);
 
-
   useEffect(() => {
-    if(types === undefined || types == null || types.length === 0) {
+    if (types === undefined || types == null || types.length === 0) {
       dispatch(getTypeRequest());
     }
     if (isLogin) {
@@ -47,14 +49,13 @@ const Navbar = (props) => {
       let stompClient = Stomp.over(sock);
       stompClient.connect(
         { username: auth.user.content },
-        function ( _ ) {      
-          dispatch(addNotificationRequest(stompClient))
+        function (_) {
+          dispatch(addNotificationRequest(stompClient));
         },
         (err) => console.log(err)
       );
     }
- 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, isLogin]);
 
   const handleLogout = (e) => {
@@ -64,32 +65,37 @@ const Navbar = (props) => {
 
   const mapTypeByLevel = (level) => {
     return (
-      <div class="col-3">
+      <div class="col-lg-3">
         <h5>
-          {level === 1
-            ? t('header.lnavbar.type.level.l1', { framework: "react-i18next" })
-            : level === 2
-            ? t('header.lnavbar.type.level.l2', { framework: "react-i18next" })
-            : t('header.lnavbar.type.level.l3', { framework: "react-i18next" })}
+
+          {levelTypeSelector(level, t)}
         </h5>
         <ul>
           {types.map((item, idx) => {
             if (item.level === level)
-              if(lang === "vn")
+              if (lang === "vn")
                 return (
                   <li>
-                    <a href={`/danh-muc/${item.id}/${item.path}`}>{item.name}</a>
+                    <a href={`/danh-muc/${item.id}/${item.path}`}>
+                      {item.name}
+                    </a>
                   </li>
                 );
               else
-                  return (
-                    <li>
-                      <a href={`/danh-muc/${item.id}/${item.path}`}>{item.name_en}</a>
-                    </li>
-                  )
+                return (
+                  <li>
+                    <a href={`/danh-muc/${item.id}/${item.path}`}>
+                      {item.name_en}
+                    </a>
+                  </li>
+                );
             else return <></>;
           })}
-          <Link to={"/cate/see-more"}>{t('header.lnavbar.type.watch_more', { framework: "react-i18next" })}</Link>
+          <Link to={"/cate/see-more"}>
+            {t("header.lnavbar.type.watch_more", {
+              framework: "react-i18next",
+            })}
+          </Link>
         </ul>
       </div>
     );
@@ -117,18 +123,20 @@ const Navbar = (props) => {
                 <li class="active nav-item">
                   <Link to="/" class="nav-link text-left">
                     <i class="fa fa-home"></i>
-                    { t('header.lnavbar.homepage', { framework: "react-i18next" }) }
-                    
+                    {t("header.lnavbar.homepage", {
+                      framework: "react-i18next",
+                    })}
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <div class="cate-dropdown ">
+                  <div class="cate-dropdown">
                     <li
                       class="nav-link text-left cateBtn"
-                      onClick={(e) => history.push("/danh-sach-blog")}
-                    >
-                      { t('header.lnavbar.type.title', { framework: "react-i18next" }) }
+                      onClick={(e) => history.push("/danh-sach-blog")}>
+                      {t("header.lnavbar.type.title", {
+                        framework: "react-i18next",
+                      })}
                       <i class="fa fa-caret-down"></i>
                     </li>
                     <div class="cate-content">
@@ -152,12 +160,16 @@ const Navbar = (props) => {
                 </li>
                 <li className="nav-item">
                   <Link to="/contact" class="nav-link text-left">
-                  { t('header.lnavbar.contact', { framework: "react-i18next" }) }
+                    {t("header.lnavbar.contact", {
+                      framework: "react-i18next",
+                    })}
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/about" class="nav-link text-left">
-                  { t('header.lnavbar.aboutme', { framework: "react-i18next" }) }
+                    {t("header.lnavbar.aboutme", {
+                      framework: "react-i18next",
+                    })}
                   </Link>
                 </li>
               </ul>
@@ -166,13 +178,18 @@ const Navbar = (props) => {
                   <>
                     <li>
                       <Link to="/login" class="nav-link text-left">
-                      { t('header.snavbar.login', { framework: "react-i18next" }) }
+                        {t("header.snavbar.login", {
+                          framework: "react-i18next",
+                        })}
                       </Link>
+                      
                     </li>
                     <li>
                       <Link to="/register" class="nav-link text-left">
                         <i class="fa fa-user-plus"></i>
-                        { t('header.snavbar.signup', { framework: "react-i18next" }) }
+                        {t("header.snavbar.signup", {
+                          framework: "react-i18next",
+                        })}
                       </Link>
                     </li>
                   </>
@@ -192,15 +209,20 @@ const Navbar = (props) => {
                           id="notificationBtn"
                           data-toggle="dropdown"
                           aria-haspopup="true"
-                          aria-expanded="false"
-                        >
+                          aria-expanded="false">
+                          
                           <i class="fa fa-bell-o" aria-hidden="true"></i>
                           <nav class="num-noti">
-                            {isEmpty(notification.content) !== true &&
-                              notification.content.length}
+                            {isEmpty(notification.content) !== true ?
+                              selectNotiNumber(notification.content.length) : 0}
                           </nav>{" "}
                           {/* nếu >99 = 99+ */}
                         </button>
+
+                        <Link to={"/user/notification"} className="minimal-noti">
+                          <i class="fa fa-bell-o" aria-hidden="true"></i>
+                        </Link>
+
                         <div
                           class="dropdown-menu noti-menu"
                           aria-labelledby="notificationBtn"
@@ -222,7 +244,8 @@ const Navbar = (props) => {
                                     <img
                                       className="img-fluid rounded-circle"
                                       src={
-                                        Config.IMG_URL_ACCOUNT + "image_default.jpg"
+                                        Config.IMG_URL_ACCOUNT +
+                                        "image_default.jpg"
                                       }
                                       alt="user-sample"
                                     />
@@ -251,7 +274,7 @@ const Navbar = (props) => {
                               );
                             })
                           ) : (
-                            <></>
+                            <div style={{textAlign: "center", padding: "10px 20px"}}>Không có thông báo</div>
                           )}
                         </div>
                       </Link>
@@ -284,23 +307,33 @@ const Navbar = (props) => {
                         >
                           <Link class="dropdown-item" to="/user">
                             <i class="fa fa-user bg-white"></i>
-                            { t('header.snavbar.me.info', { framework: "react-i18next" }) }
+                            {t("header.snavbar.me.info", {
+                              framework: "react-i18next",
+                            })}
                           </Link>
                           <Link class="dropdown-item " to="/user/blog/">
                             <i class="fa fa-tasks"></i>
-                            { t('header.snavbar.me.manage', { framework: "react-i18next" }) }
+                            {t("header.snavbar.me.manage", {
+                              framework: "react-i18next",
+                            })}
                           </Link>
                           <Link class="dropdown-item" to="/user/blog/add">
                             <i class="fa fa-plus-circle"></i>
-                            { t('header.snavbar.me.create_blog', { framework: "react-i18next" }) }
+                            {t("header.snavbar.me.create_blog", {
+                              framework: "react-i18next",
+                            })}
                           </Link>
                           <Link class="dropdown-item" to="/user/help">
                             <i class="fa fa-info-circle"></i>
-                            { t('header.snavbar.me.help', { framework: "react-i18next" }) }
+                            {t("header.snavbar.me.help", {
+                              framework: "react-i18next",
+                            })}
                           </Link>
                           <Link class="dropdown-item" to="/notification/error">
                             <i class="fa fa-exclamation-triangle"></i>
-                            { t('header.snavbar.me.response', { framework: "react-i18next" }) }
+                            {t("header.snavbar.me.response", {
+                              framework: "react-i18next",
+                            })}
                           </Link>
                           <div class="dropdown-divider"></div>
                           <Link
@@ -312,7 +345,9 @@ const Navbar = (props) => {
                               class="fa fa-sign-out"
                               aria-hidden="true"
                             ></i>{" "}
-                            { t('header.snavbar.me.signout', { framework: "react-i18next" }) }
+                            {t("header.snavbar.me.signout", {
+                              framework: "react-i18next",
+                            })}
                           </Link>
                         </div>
                       </div>
@@ -324,8 +359,30 @@ const Navbar = (props) => {
           </nav>
         </div>
       </div>
+      <div class="row ml-1 mt-2 minimal-cate">
+        {types.map((item, idx) => {
+          if (lang === "vn")
+            return (
+              <div class="col-6 card">
+                <div class="card-body">
+                  <a href={`/danh-muc/${item.id}/${item.path}`}>{item.name}</a>
+                </div>
+              </div>
+            );
+          else
+            return (
+              <div class="col-6 card">
+                <div class="card-body">
+                  <a href={`/danh-muc/${item.id}/${item.path}`}>
+                    {item.name_en}
+                  </a>
+                </div>
+              </div>
+            );
+        })}
+      </div>
     </div>
   );
 };
 
-export default withTranslation('common')(Navbar);
+export default withTranslation("common")(Navbar);

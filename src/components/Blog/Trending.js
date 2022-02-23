@@ -1,57 +1,41 @@
-import React, { useState } from "react";
+import React, {  } from "react";
 import ContentLoader from "react-content-loader";
-import { formatPublishDate } from '../../utils/datetimejs'
-import {Link} from 'react-router-dom'
+import { formatPublishDate } from "../../utils/datetimejs";
+import { Link } from "react-router-dom";
 import { withTranslation } from "react-i18next";
+import { isEmpty } from "lodash";
+
 const Trending = ({ rank, post, t, i18n }) => {
-  let [isLoved, setIsLoved] = useState(false)
-
-  const handleLover = e => {
-    setIsLoved(!isLoved)
-  }
-
   return (
-    // <div class="trend-entry d-flex">
-    //   <div class="number align-self-start">{rank}</div>
-    //   <div class="trend-contents">
-    //     <h2>
-    //       <Link to ={'/blog/' + post.link}>{post.title}</Link>
-    //     </h2>
-    //     <div class="post-meta">
-    //       <span class="d-block">
-    //         <a href="#">{post.account.username}</a> in <a href="#">{post.types[0].name}</a>
-    //       </span>
-    //       <span class="date-read">
-    //         {formatPublishDate(post.publishDate)}
-    //         <span class="mx-1">&bull;</span>
-    //         <span><i class="fa fa-heart" style={{ color: `${!isLoved ? 'gray' : 'red'}` }} onClick={ e => handleLover(e)} aria-hidden="true"></i></span>
-    //       </span>
-    //     </div>
-    //   </div>
-    // </div>
-
-    <div class="trend-entry d-flex">
-      <div class="number align-self-start">{rank}</div>
-      <div class="trend-contents">
-        <h2>
-        <Link to ={'/blog/' + post.link}>{post.title}</Link>
-        </h2>
-        <div class="post-meta">
-          <span class="d-block">
-            <span>{post.account.username}</span> Trong <span>{post.types[0].name}</span>
-            <span class="mx-1">&bull;</span>
-            <span><i className="fa fa-heart" style={{ color: `${!isLoved ? 'gray' : 'red'}` }} onClick={ e => handleLover(e)} aria-hidden="true"></i></span>
-          </span>
-          <span class="date-read">
-          { i18n.language === "vn" ? formatPublishDate(post.publishDate, false) : formatPublishDate(post.publishDate, true)}
-          </span>
+   
+    <>
+      {isEmpty(post) ? (
+        <></>
+      ) : (
+        <div class="trend-entry d-flex">
+          <div class="number align-self-start">{rank}</div>
+          <div class="trend-contents">
+            <h2>
+              <Link to={"/blog/" + post.link}>{post.title}</Link>
+            </h2>
+            <div class="post-meta">
+              <span class="d-block">
+                <span>{post.account.username}</span> Trong{" "}
+                <span>{post.types[0].name}</span>
+              </span>
+              <span class="date-read">
+                {i18n.language === "vn"
+                  ? formatPublishDate(post.publishDate, false)
+                  : formatPublishDate(post.publishDate, true)}
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 export default withTranslation("common")(Trending);
-
 
 export const LoaderTrending = () => {
   return (

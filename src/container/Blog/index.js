@@ -22,7 +22,7 @@ const Blog = (props) => {
   const [auth] = useSelector((state) => [isAuth(state)]);
   const [blog, same_cate] = useSelector((state) => [
     state.blogReducers.blog,
-    state.blogReducers.same_cate
+    state.blogReducers.same_cate,
   ]);
 
   useEffect(() => {
@@ -32,9 +32,6 @@ const Blog = (props) => {
     dispatch(loadAction(true));
     dispatch(getBlogByNameRequest(parseInt(l_name[0]), props.history));
   }, [dispatch, name, props.history]);
-
-
-  console.log(props)
 
   return (
     <div className="blog-details-section">
@@ -53,7 +50,28 @@ const Blog = (props) => {
             <Suspense fallback={<TrendingLoader />}>
               <TrendingLazy />
             </Suspense>
+            <div className="loved-section">
+              <button className="btn btn-outline-danger">
+                <i
+                  className="fa fa-heart"
+                  style={{ color: `red}` }}
+                  aria-hidden="true"
+                ></i>
+              </button>
+              <span> Hoặc </span>
 
+              <button className="btn btn-outline-primary">
+                <i className="fa fa-facebook" aria-hidden="true"></i>
+              </button>
+
+              <button className="btn btn-outline-success m-3">
+                <i className="fa fa-twitter" aria-hidden="true"></i>
+              </button>
+
+              <button className="btn btn-outline-secondary">
+                <i className="fa fa-telegram" aria-hidden="true"></i>
+              </button>
+            </div>
             {blog !== undefined && blog.types !== undefined && (
               <>
                 <div class="section-title">

@@ -10,15 +10,15 @@ const Header = props => {
     <div class="header-top">
       <div class="container pt-3 pb-3">
         <div class="row align-items-center">
-          <div class="col-3 col-lg-3 d-flex">
+          <div class="col-3 logo-container d-flex">
             <Link to="/" class="site-logo">
               <img src={process.env.PUBLIC_URL + "/logo.png"} alt="logo" />
             </Link>
 
            
           </div>
-          <div class="col-6 col-lg-6 d-flex">
-            <form action="#" class="search-form d-inline-block">
+          <div class="col-6 d-flex search-form ">
+            <form action="#" class="d-inline-block">
               <div class="d-flex">
                 <div class="dropdown">
                   <input
@@ -38,10 +38,13 @@ const Header = props => {
               </div>
             </form>
           </div>
-          <div class="col-3 d-block text-right">
-              <button className="btnChangeLang" onClick={e => i18n.changeLanguage('en')}>EN</button>
+          <div class="col-3 d-block text-right change-lang">
+            <div className="d-flex">
+            <button className="btnChangeLang" onClick={e => i18n.changeLanguage('en')}>EN</button>
               |
               <button className="btnChangeLang" onClick={e => i18n.changeLanguage('vn')}>VN</button>
+            </div>
+              
           </div>
         </div>
       </div>
