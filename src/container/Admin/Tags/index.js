@@ -30,6 +30,7 @@ const TagsDashBoard = ({ t }) => {
       },
     ],
     []
+
   );
 
   const transData = (data) => {
@@ -44,7 +45,9 @@ const TagsDashBoard = ({ t }) => {
         });
   };
 
-  const dataTable = React.useMemo(() => transData(types),[types]);
+  const dataTable = React.useMemo(() => transData(types),
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [types]);
 
   return (
     <TableFile
