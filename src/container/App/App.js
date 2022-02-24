@@ -14,9 +14,9 @@ import "./App.css";
 import NetworkError from "../Error/NetworkError";
 import { withTranslation } from "react-i18next";
 
+ 
 const App = (props) => {
   InterceptorError(props.history);
-
   const showContent = (routes, auth) => {
     var result = null;
     if (routes.length > 0) {

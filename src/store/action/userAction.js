@@ -1,5 +1,6 @@
 import * as Types from "../../constraints/ActionTypes";
 import * as UserServices from "../../service/userService";
+import { loadAction } from "./loadingAction";
 
 export const getUserDetails = (history) => {
   return dispatch => {
@@ -16,6 +17,9 @@ export const registerActionRequest = (req) => {
   return (dispatch) => {
     UserServices.registerService(req)
       .then((res) => {
+
+        dispatch(loadAction(false))
+
         dispatch({
           type: Types.USER_SUCCESS_REGISTER,
           payload: res.data,

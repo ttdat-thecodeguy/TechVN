@@ -12,7 +12,9 @@ axiosInstance.interceptors.request.use(config => {
     
     // config.params = config.params || {}
     const auth = isAuth(state)
-    if (auth) config.headers['Authorization'] = 'Bearer ' + auth.token
+    if (auth) {
+        config.headers['Authorization'] = 'Bearer ' + auth.token
+    }
     return config
 })
 

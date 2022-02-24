@@ -36,9 +36,6 @@ export const getRecommendRequest = () => {
 };
 
 export const getTrendingRequest = (isList, start) => {
-
-  console.log("run" + start)
-
   return (dispatch) => {
     getTrending(isList, start).then((res) => {
       dispatch({
@@ -153,9 +150,6 @@ export const addRequest = (data, history) => {
 export const updateRequest = (data) => {
   return dispatch => {
     update(data).then(res => {
-
-      console.log(res.data)
-
       dispatch({
         type: Types.UPDATE_BLOG,
         payload: res.data

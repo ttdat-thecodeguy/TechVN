@@ -3,7 +3,7 @@ const AboutMe = (props) => {
   return (
     <>
       <nav className="about-me">
-        <div class="row max-width">
+        <div class="container">
           
           <div class="mainAboutMe" id="Home">
             <div class="heading-section bg-02" style={{ backgroundImage: `url("images/img_bg_1.jpg")` }}>
@@ -80,7 +80,7 @@ const AboutMe = (props) => {
                 </p>
               </div>
               <div class="row">
-                <div class="col col-1-of-2">
+                <div class="col-lg-6">
                   <h3>Linux</h3>
                   <div class="special-line">
                     <div class="line line-pts bg-blue">
@@ -89,7 +89,7 @@ const AboutMe = (props) => {
                     </div>
                   </div>
                 </div>
-                <div class="col col-2-of-2">
+                <div class="col-lg-6">
                   <h3>Front-end</h3>
                   <div class="special-line">
                     <div class="line line-jquery bg-red">
@@ -100,7 +100,7 @@ const AboutMe = (props) => {
                 </div>
               </div>
               <div class="row">
-                <div class="col col-1-of-2">
+                <div class="col-lg-6">
                   <h3>Spring</h3>
                   <div class="special-line">
                     <div class="line line-html bg-yellow">
@@ -109,7 +109,7 @@ const AboutMe = (props) => {
                     </div>
                   </div>
                 </div>
-                <div class="col col-2-of-2">
+                <div class="col-lg-6">
                   <h3>Nodejs</h3>
                   <div class="special-line">
                     <div class="line line-css bg-purple">
@@ -121,7 +121,7 @@ const AboutMe = (props) => {
               </div>
             </div>
 
-            <div class="contact-section section" id="Ticket">
+            {/* <div class="contact-section section" id="Ticket">
               <h2 class="text-heading-section">TICKET TO MARS</h2>
               <h3 class="text-sub-section">MY TICKET</h3>
 
@@ -132,7 +132,7 @@ const AboutMe = (props) => {
                 src="https://mars.nasa.gov/layout/embed/send-your-name/future/certificate/?cn=53801149592"
                 frameborder="0"
               ></iframe>
-            </div>
+            </div> */}
 
             <div class="contact-section section" id="CV">
               <h2 class="text-heading-section">CV Job</h2>
@@ -167,7 +167,7 @@ const AboutMe = (props) => {
               <h2 class="text-heading-section">GET IN TOUCH</h2>
               <h3 class="text-sub-section">CONTACT</h3>
               <div class="row">
-                <div class="col col-1-of-2">
+                <div class="col col-lg-6">
                   <ul>
                     <li>
                       {" "}
@@ -184,7 +184,7 @@ const AboutMe = (props) => {
                     </li>
                   </ul>
                 </div>
-                <div class="col col-2-of-2">
+                <div class="col col-lg-6">
                   <form action="">
                     <div class="row">
                       <input type="text" name="" id="" placeholder="Name" />

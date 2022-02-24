@@ -2,12 +2,12 @@ const Contact = (props) => {
   return (
 
     <nav className="about-me">
-        <div class="row max-width" style={{ display: "flow-root" }}>
+        <div class="container" style={{ display: "flow-root" }}>
         <div class="contact-section section " id="Contact">
               <h2 class="text-heading-section">GET IN TOUCH</h2>
               <h3 class="text-sub-section">CONTACT</h3>
               <div class="row">
-                <div class="col col-1-of-2">
+                <div class="col col-lg-6">
                   <ul>
                     <li>
                       {" "}
@@ -24,7 +24,7 @@ const Contact = (props) => {
                     </li>
                   </ul>
                 </div>
-                <div class="col col-2-of-2">
+                <div class="col col-lg-6">
                   <form action="">
                     <div class="row">
                       <input type="text" name="" id="" placeholder="Name" style={{ width: "100%" }}/>

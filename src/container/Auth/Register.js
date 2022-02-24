@@ -9,7 +9,7 @@ import { withTranslation } from "react-i18next";
 
 import Notification from "../../components/Notification";
 import * as NotiTypes from "../../constraints/NotificationTypes";
-import * as Types from "../../constraints/ActionTypes";
+import { loadAction } from "../../store/action/loadingAction";
 
 const Register = ({ t }) => {
   const [name, setName] = useState("");
@@ -70,10 +70,7 @@ const Register = ({ t }) => {
       username: name,
       password,
     };
-    dispatch({
-      type: Types.LOADING_TOGGLE,
-      payload: true,
-    });
+    dispatch(loadAction(true));
     dispatch(registerActionRequest(req));
   };
 

@@ -47,6 +47,8 @@ const Navbar = (props) => {
       dispatch(getAllNotificationRequest(0, 5));
       var sock = new SockJS(Config.WS_MESSAGE);
       let stompClient = Stomp.over(sock);
+      stompClient.debug = null;
+
       stompClient.connect(
         { username: auth.user.content },
         function (_) {
