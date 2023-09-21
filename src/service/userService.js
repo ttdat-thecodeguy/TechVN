@@ -26,11 +26,11 @@ export const registerSocialLoginService = req => {
 }
 
 export const loginService = req => {
-    return axiosInstance.post(`/login`, req)
+    return axiosInstance.post(`/api/login`, req)
 }
 
 export const loginSocialService = req => {
-    return axiosInstance.post(`/social-login`, req)
+    return axiosInstance.post(`/api/social-login`, req)
 }
 
 export const registerService = req => {

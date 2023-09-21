@@ -68,6 +68,6 @@ export const editorConfig = {
   export const DANGER = { id: 2, name : "Cảnh Báo" };
   export const PENDING = { id: 3, name : "Đang Chờ" };
 
- export const MAIN_URL = `https://techblog-vn.herokuapp.com`
+ export const MAIN_URL = `http://localhost:5000`
 
-  export const WS_MESSAGE = `${MAIN_URL}/ws-message`;
+ export const WS_MESSAGE = `${MAIN_URL}/ws-message`;

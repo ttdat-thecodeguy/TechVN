@@ -22,7 +22,7 @@ const Slide = () => {
     slidesToScroll: 1,
   };
   return (
-    <div class="site-section py-0">
+    <div class="site-section mb-5">
       <Slider {...settings}>
         { posts.map((post) => {
           return <SliderItem post={post} />;
